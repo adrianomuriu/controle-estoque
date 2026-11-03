@@ -10,13 +10,13 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="LIMPEZA DIARIA">
-<meta name="application-name" content="LIMPEZA DIARIA">
+<meta name="apple-mobile-web-app-title" content="Pedido Diário">
+<meta name="application-name" content="Pedido Diário">
 <meta property="og:type" content="website">
-<meta property="og:title" content="LIMPEZA DIARIA">
-<meta property="og:description" content="Pedido diário de limpeza">
-<meta name="description" content="Pedido diário de limpeza">
-<title>Pedido Diário de Limpeza</title>
+<meta property="og:title" content="Pedido Diário">
+<meta property="og:description" content="Pedido diário de limpeza e bebidas">
+<meta name="description" content="Pedido diário de limpeza e bebidas">
+<title>Pedido Diário</title>
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <style>
 /* Layout: app de uma coluna, cabeçalho verde cheio, cartões arredondados, barra de ações fixa embaixo. Modo "conferência" para quem recebe o link. */
@@ -94,6 +94,10 @@ input:focus { border-color: var(--accent); }
 .ico svg { width: 20px; height: 20px; }
 .edit-box { display: grid; gap: 10px; padding: 12px 0; border-top: 1px solid var(--line); }
 .edit-box .two { display: grid; grid-template-columns: 1fr 96px; gap: 8px; }
+.edit-box .trio { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.edit-box .trio .fl { display: grid; gap: 4px; min-width: 0; font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.edit-box .trio .fl.wide { grid-column: 1 / -1; }
+.vrow .vq .tot { display: block; font-size: .72rem; font-weight: 700; margin-top: 1px; }
 .edit-box .acts, .confirm { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .confirm { flex: none; }
 .btn { min-height: 48px; padding: 0 18px; border-radius: 16px; border: 0; font: inherit; font-weight: 800; font-size: 1rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; text-align: center; touch-action: manipulation; }
@@ -113,6 +117,9 @@ pre.msg.none { color: var(--muted); }
 .two-btn { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .zbox { margin-top: 14px; padding: 14px; border-radius: 16px; background: var(--danger-bg); display: grid; gap: 12px; }
 .zbox strong { color: var(--danger); }
+.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 5px; border-radius: 18px; background: var(--mint); }
+.tab { min-height: 48px; border: 0; border-radius: 14px; background: transparent; color: var(--mint-ink); font: inherit; font-weight: 800; font-size: 1.05rem; cursor: pointer; touch-action: manipulation; }
+.tab[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); }
 .obanner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 16px; border-radius: 18px; background: var(--mint); color: var(--mint-ink); border: 1.5px solid var(--accent); font-weight: 700; }
 .obanner span { flex: 1 1 200px; min-width: 0; }
 .infobox { margin-top: 14px; padding: 14px; border-radius: 16px; background: var(--mint); color: var(--fg); display: grid; gap: 8px; font-size: .95rem; justify-items: start; }
@@ -135,6 +142,8 @@ pre.msg.none { color: var(--muted); }
 .prog .txt { font-weight: 800; font-variant-numeric: tabular-nums; }
 .vlist { margin-top: 10px; }
 .vitem { border-top: 1px solid var(--line); }
+.vsec { margin-top: 14px; padding: 8px 12px; border-radius: 12px; background: var(--mint); color: var(--mint-ink); font-size: .8rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.vsec:first-child { margin-top: 0; }
 .vrow { width: 100%; display: flex; align-items: center; gap: 10px; }
 .vmain { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 14px 0; border: 0; background: transparent; color: var(--fg); font: inherit; text-align: left; cursor: pointer; touch-action: manipulation; }
 .vedit { display: grid; gap: 10px; justify-items: start; margin: 0 0 14px; padding: 14px; border-radius: 16px; background: var(--mint); }
@@ -172,6 +181,10 @@ pre.msg.none { color: var(--muted); }
 </header>
 
 <main class="wrap" id="edit">
+  <div class="tabs" role="tablist" aria-label="Tipo de pedido">
+    <button type="button" role="tab" class="tab" id="tab-limp" aria-selected="true">Limpeza</button>
+    <button type="button" role="tab" class="tab" id="tab-beb" aria-selected="false">Bebidas</button>
+  </div>
   <div class="obanner" id="obanner" hidden>
     <span>Para compartilhar no WhatsApp, abra este app no navegador.</span>
     <button class="btn pri sm" id="ob1" type="button">Abrir no navegador</button>
@@ -211,7 +224,7 @@ pre.msg.none { color: var(--muted); }
       <button type="button" class="chip" id="mode-text" aria-pressed="false">Lista em texto</button>
     </div>
     <pre class="msg" id="msg"></pre>
-    <p class="hint" id="file-wrap">O WhatsApp recebe só o arquivo LIMPEZA DIARIA. Quem abrir vê a lista e marca os itens com ✅. Se o celular não abrir o compartilhamento, o arquivo é baixado: no WhatsApp, toque no clipe 📎, escolha Documento e selecione o arquivo.</p>
+    <p class="hint" id="file-wrap">O WhatsApp recebe só o arquivo <b id="fname">LIMPEZA DIARIA</b>. Quem abrir vê a lista e marca os itens com ✅. Se o celular não abrir o compartilhamento, o arquivo é baixado: no WhatsApp, toque no clipe 📎, escolha Documento e selecione o arquivo.</p>
     <div id="link-wrap">
       <div class="field" style="margin-top:14px">
         <label class="lbl" for="base">Endereço do app (usado no link)</label>
@@ -310,23 +323,65 @@ pre.msg.none { color: var(--muted); }
     ['Luva branca', 'und', 0], ['Vassoura de corredor', 'und', 2]
   ];
 
+  // Quantidade com unidades: "1 FD 12 und" quando o produto tem quantas unidades vêm no fardo; senão "4und".
+  function fmtQty(q, un, pack) {
+    un = un || 'und'; pack = Number(pack) || 0;
+    return pack > 0 ? q + ' ' + un + ' ' + (q * pack) + ' und' : q + un;
+  }
+  // Lista de bebidas: [nome, unidade, quantidade inicial, unidades por fardo (0 = não informado)].
+  var BEVV = 4;
+  // Ajuste da versão 3 para a 4: mantém o que você já editou e só corrige o tamanho destes fardos.
+  var BEVPATCH = { 'Coca-Cola Zero lata': 8, 'Fanta laranja lata 350ml': 8, 'Fanta uva lata 350ml': 8, 'Sprite lata 350ml': 8, 'Sprite Zero 350ml': 6 };
+  var BEV = [
+    ['Água 20 litros', 'und', 0, 0], ['Água copo', 'FD', 0, 48],
+    ['Água mineral c/ gás Sterbom 500ml', 'FD', 0, 12], ['Água mineral s/ gás Sterbom 510ml', 'FD', 0, 12],
+    ['Amstel lata 350ml', 'FD', 0, 12], ['Barril de chopp 50 litros', 'und', 0, 0],
+    ['Brahma Duplo Malte lata', 'FD', 0, 12], ['Brahma Malzbier', 'FD', 0, 24], ['Brahma Zero lata 350ml', 'FD', 0, 12],
+    ['Cachaça a granel Jequitibá Sanvale 20L', 'und', 0, 0], ['Cerveja Budweiser long', 'FD', 0, 24],
+    ['Coca-Cola lata 350ml', 'FD', 0, 12], ['Coca-Cola Zero lata', 'FD', 0, 8], ['Coco verde', 'und', 0, 0],
+    ['Corona Extra 330ml', 'FD', 0, 24], ['Corona Zero', 'FD', 0, 24], ['Devassa lata 350ml', 'FD', 0, 12],
+    ['Eisenbahn long', 'FD', 0, 24], ['Fanta laranja lata 350ml', 'FD', 0, 8], ['Fanta uva lata 350ml', 'FD', 0, 8],
+    ['Guaraná Antarctica', 'FD', 0, 12], ['Guaraná Antarctica Zero', 'FD', 0, 12],
+    ['H2O limão', 'FD', 0, 12], ['H2O limoneto', 'FD', 0, 12],
+    ['Heineken long', 'FD', 0, 24], ['Heineken lata 350ml', 'FD', 0, 12], ['Heineken Zero lata 350ml', 'FD', 0, 12], ['Heineken Zero long', 'FD', 0, 24],
+    ['Monster Energy 473ml', 'FD', 0, 6], ['Red Bull 250ml', 'FD', 0, 24],
+    ['Sanvale prata a granel 50L', 'und', 0, 0], ['Schweppes Zero açúcar 350ml', 'FD', 0, 12],
+    ['Sprite lata 350ml', 'FD', 0, 8], ['Sprite Zero 350ml', 'FD', 0, 6], ['Stella Pure Gold', 'FD', 0, 24],
+    ['Tônica Antarctica', 'FD', 0, 12], ['Tônica Antarctica Zero', 'FD', 0, 12]
+  ];
+  var TABS = {
+    limp: { name: 'LIMPEZA DIARIA', short: 'Limpeza', h1: 'Pedido Diário de Limpeza', view: 'Limpeza diária', head: 'Pedido de limpeza', seed: SEED },
+    beb:  { name: 'BEBIDAS', short: 'Bebidas', h1: 'Pedido Diário de Bebidas', view: 'Bebidas', head: 'Pedido de bebidas', seed: BEV }
+  };
+
   var uid = 0;
   function newId() { uid += 1; return 'p' + Date.now().toString(36) + uid; }
 
   var S = null;
   function seedState() {
     return {
-      day: todayISO(), date: todayISO(), unit: '', resp: '', phone: '', hdr: false, mode: 'file', v2: true, base: '',
-      items: SEED.map(function (r) { return { id: newId(), name: r[0], un: r[1], qty: r[2] }; })
+      day: todayISO(), date: todayISO(), unit: '', resp: '', phone: '', hdr: false, mode: 'file', v2: true, base: '', tab: 'limp',
+      items: SEED.map(mkItem),
+      bev: BEV.map(mkItem), bevV: BEVV
     };
   }
+  function mkItem(r) { return { id: newId(), name: r[0], un: r[1], qty: r[2], pack: r[3] || 0 }; }
   function load() {
     var raw = null;
     try { raw = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { raw = null; }
     if (raw && Array.isArray(raw.items) && raw.items.length) {
       var t = todayISO();
+      if (Array.isArray(raw.bev) && raw.bevV === 3) {
+        raw.bev.forEach(function (it) { if (BEVPATCH[it.name] !== undefined) it.pack = BEVPATCH[it.name]; });
+        raw.bevV = BEVV;
+      }
+      if (!Array.isArray(raw.bev) || !raw.bev.length || raw.bevV !== BEVV) {
+        raw.bev = BEV.map(mkItem); raw.bevV = BEVV;
+      }
+      raw.tab = raw.tab === 'beb' ? 'beb' : 'limp';
       if (raw.day !== t) {
         raw.items.forEach(function (it) { it.qty = 0; });
+        raw.bev.forEach(function (it) { it.qty = 0; });
         raw.day = t; raw.date = t;
       }
       if (!raw.v2) { raw.mode = 'file'; raw.v2 = true; }
@@ -343,7 +398,17 @@ pre.msg.none { color: var(--muted); }
   var editId = null, delId = null, adding = false, query = '', toastTimer = null;
   var curMsg = '', seq = 0;
 
-  function selected() { return S.items.filter(function (i) { return i.qty > 0; }); }
+  function cfg() { return TABS[S.tab === 'beb' ? 'beb' : 'limp']; }
+  function items() { return S.tab === 'beb' ? S.bev : S.items; }
+  function setItems(arr) { if (S.tab === 'beb') S.bev = arr; else S.items = arr; }
+  function selected() { return items().filter(function (i) { return i.qty > 0; }); }
+  function selOf(arr) { return arr.filter(function (i) { return i.qty > 0; }); }
+  function totalSel() { return selOf(S.items).length + selOf(S.bev).length; }
+  // Nome do que é enviado: só bebidas, só limpeza ou os dois juntos.
+  function listName(hasL, hasB) { return hasL && hasB ? 'LISTA DIARIA' : hasB ? 'PEDIDO DIARIO BAR' : hasL ? 'PEDIDO DIARIO LIMPEZA' : null; }
+  function curName() {
+    return listName(selOf(S.items).length > 0, selOf(S.bev).length > 0) || (S.tab === 'beb' ? 'PEDIDO DIARIO BAR' : 'PEDIDO DIARIO LIMPEZA');
+  }
 
   /* ---------- Link do pedido: o pedido vai dentro do endereço (sem servidor) ---------- */
   function b64uEnc(bytes) {
@@ -398,38 +463,59 @@ pre.msg.none { color: var(--muted); }
   function currentBase() { return normBase(S.base) || detectBase(); }
 
   // Produtos da lista padrão vão só como número (link bem mais curto); os que você criou vão com o nome.
-  function payload() {
+  function rowsOf(arr, seed) {
     var seedIdx = {};
-    SEED.forEach(function (r, k) { seedIdx[r[0] + '|' + r[1]] = k; });
+    seed.forEach(function (r, k) { seedIdx[r[0] + '|' + r[1]] = k; });
+    return selOf(arr).map(function (it) {
+      var k = seedIdx[it.name + '|' + (it.un || 'und')], pack = Number(it.pack) || 0;
+      if (k !== undefined) return pack === (seed[k][3] || 0) ? [k, it.qty] : [k, it.qty, pack];
+      return pack ? [it.name, it.qty, it.un || 'und', pack] : [it.name, it.qty, it.un || 'und'];
+    });
+  }
+  // O pedido leva as duas abas: l = limpeza, b = bebidas (só as que tiverem itens).
+  function payload() {
     var u = S.unit.trim(), ui = UNITS.indexOf(u);
-    return {
-      d: S.date, u: ui >= 0 ? ui : u, r: S.resp.trim(),
-      i: selected().map(function (it) {
-        var k = seedIdx[it.name + '|' + (it.un || 'und')];
-        return k !== undefined ? [k, it.qty] : [it.name, it.qty, it.un || 'und'];
-      })
-    };
+    var o = { d: S.date, u: ui >= 0 ? ui : u, r: S.resp.trim() };
+    var l = rowsOf(S.items, SEED), b = rowsOf(S.bev, BEV);
+    if (l.length) o.l = l;
+    if (b.length) o.b = b;
+    return o;
+  }
+  function expRows(rows, seed, sec) {
+    return (rows || []).map(function (row) {
+      if (typeof row[0] === 'number') {
+        var s = seed[row[0]] || ['Item ' + row[0], 'und', 0, 0];
+        return [s[0], row[1], s[1], row[2] !== undefined ? row[2] : (s[3] || 0), sec];
+      }
+      return [row[0], row[1], row[2] || 'und', row[3] || 0, sec];
+    });
   }
   function expandPayload(d) {
-    d.i = d.i.map(function (row) {
-      if (typeof row[0] === 'number') { var s = SEED[row[0]] || ['Item ' + row[0], 'und']; return [s[0], row[1], s[1]]; }
-      return [row[0], row[1], row[2] || 'und'];
-    });
+    var l = d.l, b = d.b;
+    if (!l && !b && Array.isArray(d.i)) { if (d.t === 'b') b = d.i; else l = d.i; }   // pedidos no formato antigo
+    var L = expRows(l, SEED, 'l'), B = expRows(b, BEV, 'b');
+    d.i = L.concat(B);
+    d.hasL = L.length > 0; d.hasB = B.length > 0;
+    d.name = listName(d.hasL, d.hasB) || 'PEDIDO DIARIO LIMPEZA';
     if (typeof d.u === 'number') d.u = UNITS[d.u] || '';
     return d;
   }
-  function linkHead() { return 'LIMPEZA DIARIA' + (S.resp.trim() ? ' - ' + S.resp.trim() : ''); }
+  function linkHead() { return curName() + (S.resp.trim() ? ' - ' + S.resp.trim() : ''); }
 
   function textList() {
-    var sel = selected();
-    var lines = sel.map(function (it, i) { return (i + 1) + ' ' + it.name + ' *(' + it.qty + (it.un || 'und') + ')*'; });
-    if (!lines.length) return '';
+    var L = selOf(S.items), B = selOf(S.bev);
+    if (!L.length && !B.length) return '';
+    function fmt(arr) { return arr.map(function (it, i) { return (i + 1) + ' ' + it.name + ' *(' + fmtQty(it.qty, it.un, it.pack) + ')*'; }); }
+    var both = L.length > 0 && B.length > 0, out;
+    if (both) out = ['*LIMPEZA*'].concat(fmt(L), ['', '*BEBIDAS*'], fmt(B));
+    else out = fmt(L.length ? L : B);
+    var body = out.join('\n');
     if (S.hdr) {
-      var head = 'Pedido de limpeza ' + fmtDate(S.date) + (S.unit.trim() ? ' - ' + S.unit.trim() : '');
+      var head = (both ? 'Lista diária' : B.length ? 'Pedido de bebidas' : 'Pedido de limpeza') + ' ' + fmtDate(S.date) + (S.unit.trim() ? ' - ' + S.unit.trim() : '');
       if (S.resp.trim()) head += '\nResponsável: ' + S.resp.trim();
-      return head + '\n\n' + lines.join('\n');
+      return head + '\n\n' + body;
     }
-    return lines.join('\n');
+    return body;
   }
 
   function phoneDigits() {
@@ -463,11 +549,16 @@ pre.msg.none { color: var(--muted); }
     $('file-wrap').hidden = mode !== 'file';
     $('phone-wrap').hidden = mode === 'file';
     $('copy').hidden = mode === 'file';
-    $('share').textContent = mode === 'file' ? 'Compartilhar LIMPEZA DIARIA no WhatsApp' : 'Compartilhar pedido pelo WhatsApp';
+    $('share').textContent = mode === 'file' ? 'Compartilhar ' + curName() + ' no WhatsApp' : 'Compartilhar pedido pelo WhatsApp';
+    var nl = selOf(S.items).length, nb = selOf(S.bev).length, tot = nl + nb;
+    $('fname').textContent = curName();
     seq += 1;
     if (mode === 'file') {
-      paint(n ? '📎 <strong>LIMPEZA DIARIA.html</strong>\n' + n + (n === 1 ? ' item' : ' itens') + (S.resp.trim() ? ' · ' + esc(S.resp.trim()) : '') : 'Nenhum item selecionado ainda.', '', !n);
-      ['share', 'wa'].forEach(function (id) { var a = $(id); a.setAttribute('href', '#'); a.setAttribute('aria-disabled', n ? 'false' : 'true'); });
+      var parts = [];
+      if (nl) parts.push('Limpeza: ' + nl + (nl === 1 ? ' item' : ' itens'));
+      if (nb) parts.push('Bebidas: ' + nb + (nb === 1 ? ' item' : ' itens'));
+      paint(tot ? '📎 <strong>' + curName() + '.html</strong>\n' + esc(parts.join(' · ')) + (S.resp.trim() ? '\n' + esc(S.resp.trim()) : '') : 'Nenhum item selecionado ainda.', '', !tot);
+      ['share', 'wa'].forEach(function (id) { var a = $(id); a.setAttribute('href', '#'); a.setAttribute('aria-disabled', tot ? 'false' : 'true'); });
       return;
     }
     if (mode === 'text') {
@@ -480,7 +571,7 @@ pre.msg.none { color: var(--muted); }
     $('basehint').textContent = (!S.base.trim() && detectBase())
       ? 'Usando o endereço desta página. Quem abrir o link vê a lista e marca os itens.'
       : 'Cole aqui o endereço onde o app está publicado. Quem abrir o link vê a lista e marca os itens.';
-    if (!n) { paint('Nenhum item selecionado ainda.', '', true); return; }
+    if (!tot) { paint('Nenhum item selecionado ainda.', '', true); return; }
     if (!base) { paint('Para gerar o link do pedido, informe o endereço do app no campo abaixo. Ou use "Lista em texto".', '', true); return; }
     var my = seq;
     paint('Gerando link…', '', true);
@@ -495,9 +586,10 @@ pre.msg.none { color: var(--muted); }
 
   function rowHTML(it) {
     if (editId === it.id) {
-      return '<div class="edit-box" data-id="' + it.id + '">' +
-        '<div class="two"><input type="text" id="e-name" value="' + esc(it.name) + '" aria-label="Nome do produto" autocomplete="off">' +
-        '<input type="text" id="e-un" value="' + esc(it.un) + '" aria-label="Unidade" placeholder="und" autocomplete="off"></div>' +
+      return '<div class="edit-box" data-id="' + it.id + '"><div class="trio">' +
+        '<label class="fl wide">Nome<input type="text" id="e-name" value="' + esc(it.name) + '" autocomplete="off"></label>' +
+        '<label class="fl">Unidade (ex.: FD)<input type="text" id="e-un" value="' + esc(it.un) + '" placeholder="und" autocomplete="off"></label>' +
+        '<label class="fl">Und por fardo<input type="text" id="e-pack" inputmode="numeric" value="' + (Number(it.pack) > 0 ? Number(it.pack) : '') + '" placeholder="ex.: 12" autocomplete="off"></label></div>' +
         '<div class="acts"><button class="btn pri sm" data-act="save" type="button">Salvar</button><button class="btn mint sm" data-act="cancel" type="button">Cancelar</button></div></div>';
     }
     var controls;
@@ -516,7 +608,7 @@ pre.msg.none { color: var(--muted); }
 
   function renderList() {
     var q = norm(query.trim());
-    var vis = S.items.filter(function (it) { return !q || norm(it.name).indexOf(q) !== -1; });
+    var vis = items().filter(function (it) { return !q || norm(it.name).indexOf(q) !== -1; });
     if (!vis.length) {
       listEl.innerHTML = '<div class="empty">' + (q ? 'Nenhum produto encontrado para "' + esc(query.trim()) + '".' : 'Nenhum produto. Toque em + Produto para adicionar.') + '</div>';
     } else {
@@ -527,9 +619,10 @@ pre.msg.none { color: var(--muted); }
 
   function renderAdd() {
     if (!adding) { addSlot.innerHTML = ''; return; }
-    addSlot.innerHTML = '<div class="edit-box" style="margin-top:12px">' +
-      '<div class="two"><input type="text" id="n-name" placeholder="Nome do produto" aria-label="Nome do novo produto" autocomplete="off">' +
-      '<input type="text" id="n-un" value="und" aria-label="Unidade" autocomplete="off"></div>' +
+    addSlot.innerHTML = '<div class="edit-box" style="margin-top:12px"><div class="trio">' +
+      '<label class="fl wide">Nome do produto<input type="text" id="n-name" placeholder="Nome do produto" autocomplete="off"></label>' +
+      '<label class="fl">Unidade (ex.: FD)<input type="text" id="n-un" value="' + (S.tab === 'beb' ? 'FD' : 'und') + '" autocomplete="off"></label>' +
+      '<label class="fl">Und por fardo<input type="text" id="n-pack" inputmode="numeric" placeholder="ex.: 12" autocomplete="off"></label></div>' +
       '<div class="acts"><button class="btn pri sm" id="n-save" type="button">Adicionar</button><button class="btn mint sm" id="n-cancel" type="button">Cancelar</button></div></div>';
     $('n-name').focus();
     $('n-save').onclick = commitAdd;
@@ -540,7 +633,7 @@ pre.msg.none { color: var(--muted); }
     var name = $('n-name').value.trim();
     if (!name) { toast('Digite o nome do produto'); $('n-name').focus(); return; }
     var un = ($('n-un').value.trim() || 'und');
-    S.items.push({ id: newId(), name: name, un: un, qty: 1 });
+    items().push({ id: newId(), name: name, un: un, qty: 1, pack: clamp($('n-pack').value) });
     adding = false; query = ''; $('q').value = '';
     save(); renderAdd(); renderList(); renderSummary();
     toast('Produto adicionado com 1 ' + un);
@@ -557,10 +650,10 @@ pre.msg.none { color: var(--muted); }
     var el = $('toast'); el.textContent = t; el.classList.add('on');
     clearTimeout(toastTimer); toastTimer = setTimeout(function () { el.classList.remove('on'); }, 2400);
   }
-  function find(id) { for (var i = 0; i < S.items.length; i++) if (S.items[i].id === id) return S.items[i]; return null; }
+  function find(id) { var a = items(); for (var i = 0; i < a.length; i++) if (a[i].id === id) return a[i]; return null; }
   function clamp(n) { n = parseInt(n, 10); if (isNaN(n) || n < 0) n = 0; return Math.min(n, 999); }
 
-  function qLabel(it) { return it.qty > 0 ? '(' + it.qty + (it.un || 'und') + ')' : ''; }
+  function qLabel(it) { return it.qty > 0 ? '(' + fmtQty(it.qty, it.un, it.pack) + ')' : ''; }
   function updateRowQty(row, it) {
     row.classList.toggle('sel', it.qty > 0);
     var ql = row.querySelector('.q'); if (ql) ql.textContent = qLabel(it);
@@ -580,12 +673,12 @@ pre.msg.none { color: var(--muted); }
     else if (act === 'save') {
       var nm = $('e-name').value.trim();
       if (!nm) { toast('O nome não pode ficar vazio'); return; }
-      it.name = nm; it.un = $('e-un').value.trim() || 'und';
+      it.name = nm; it.un = $('e-un').value.trim() || 'und'; it.pack = clamp($('e-pack').value);
       editId = null; save(); renderList(); renderSummary();
     } else if (act === 'del') { delId = it.id; editId = null; renderList(); }
     else if (act === 'delno') { delId = null; renderList(); }
     else if (act === 'delyes') {
-      S.items = S.items.filter(function (x) { return x.id !== it.id; });
+      setItems(items().filter(function (x) { return x.id !== it.id; }));
       delId = null; save(); renderList(); renderSummary(); toast('Produto excluído');
     }
   });
@@ -630,7 +723,7 @@ pre.msg.none { color: var(--muted); }
     var msg = curMsg;
     if (!msg) {
       e.preventDefault();
-      if (!selected().length) toast('Selecione ao menos um item');
+      if (!totalSel()) toast('Selecione ao menos um item');
       else if (S.mode !== 'text' && !currentBase()) toast('Informe o endereço do app para gerar o link');
       else toast('Aguarde um instante e toque de novo');
       return;
@@ -673,18 +766,18 @@ pre.msg.none { color: var(--muted); }
     try {
       var a = document.createElement('a');
       a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
-      a.download = 'LIMPEZA DIARIA.html';
+      a.download = curName() + '.html';
       document.body.appendChild(a); a.click();
       setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
-      toast('Arquivo baixado. No WhatsApp: clipe 📎 → Documento → LIMPEZA DIARIA');
+      toast('Arquivo baixado. No WhatsApp: clipe 📎 → Documento → ' + curName());
     } catch (e) { toast('Não foi possível gerar o arquivo neste navegador.'); }
   }
   function shareFile() {
-    if (!selected().length) { toast('Selecione ao menos um item'); return; }
+    if (!totalSel()) { toast('Selecione ao menos um item'); return; }
     var html = buildOrderHTML(), file = null;
-    try { file = new File([html], 'LIMPEZA DIARIA.html', { type: 'text/html' }); } catch (e) { file = null; }
+    try { file = new File([html], curName() + '.html', { type: 'text/html' }); } catch (e) { file = null; }
     if (file && navigator.canShare && navigator.share && navigator.canShare({ files: [file] })) {
-      navigator.share({ files: [file], title: 'LIMPEZA DIARIA' }).catch(function (err) {
+      navigator.share({ files: [file], title: curName() }).catch(function (err) {
         if (err && err.name === 'AbortError') return;
         downloadOrder(html);
       });
@@ -741,7 +834,7 @@ pre.msg.none { color: var(--muted); }
     } else { fallback(); }
   }
   $('copy').addEventListener('click', function () {
-    if (!curMsg) { toast(selected().length ? 'Aguarde o link ficar pronto' : 'Selecione ao menos um item'); return; }
+    if (!curMsg) { toast(totalSel() ? 'Aguarde o link ficar pronto' : 'Selecione ao menos um item'); return; }
     copyText(curMsg, 'Mensagem copiada', null);
   });
 
@@ -751,7 +844,7 @@ pre.msg.none { color: var(--muted); }
   });
   $('zero-no').addEventListener('click', function () { $('zero-confirm').hidden = true; });
   $('zero-yes').addEventListener('click', function () {
-    S.items.forEach(function (i) { i.qty = 0; });
+    items().forEach(function (i) { i.qty = 0; });
     $('zero-confirm').hidden = true;
     save(); renderList(); renderSummary(); toast('Quantidades zeradas');
   });
@@ -777,7 +870,9 @@ pre.msg.none { color: var(--muted); }
   function vQty(i) { return V.qty[i] !== undefined ? V.qty[i] : Number(V.data.i[i][1]); }
   function pillHTML(i) {
     var row = V.data.i[i], q = vQty(i), chg = q !== Number(row[1]);
-    return esc(q) + '<small>' + esc(row[2] || 'und') + '</small>' + (chg ? '<em class="was">pedido ' + esc(row[1]) + '</em>' : '');
+    var pack = Number(row[3]) || 0;
+    return esc(q) + '<small>' + esc(row[2] || 'und') + '</small>' + (pack > 0 ? '<span class="tot">' + esc(q * pack) + ' und</span>' : '') +
+      (chg ? '<em class="was">pedido ' + esc(row[1]) + '</em>' : '');
   }
   function setQ(i, n) {
     n = clamp(n);
@@ -803,10 +898,11 @@ pre.msg.none { color: var(--muted); }
     if (d.r) meta.push('<div><span class="k">Responsável</span><b>' + esc(d.r) + '</b></div>');
     $('vmeta').innerHTML = meta.join('');
     $('vmeta').hidden = !meta.length;
-    var html = '';
+    var html = '', lastSec = '', both = d.hasL && d.hasB;
     d.i.forEach(function (row, idx) {
       var on = !!V.checked[idx];
       if (V.only && on) return;
+      if (both && row[4] !== lastSec) { lastSec = row[4]; html += '<div class="vsec">' + (row[4] === 'b' ? 'Bebidas' : 'Limpeza') + '</div>'; }
       var chg = vQty(idx) !== Number(row[1]);
       html += '<div class="vitem" data-i="' + idx + '"><div class="vrow" data-on="' + on + '">' +
         '<button type="button" class="vmain" data-act="tog"><span class="n">' + (idx + 1) + '</span><span class="vn">' + esc(row[0]) + '</span></button>' +
@@ -817,7 +913,7 @@ pre.msg.none { color: var(--muted); }
           '<div class="vstep"><button type="button" class="btn-sq" data-act="minus" aria-label="Diminuir">−</button>' +
           '<input class="vqin" type="number" inputmode="numeric" min="0" max="999" value="' + vQty(idx) + '" aria-label="Quantidade que você tem">' +
           '<button type="button" class="btn-sq" data-act="plus" aria-label="Aumentar">+</button></div>' +
-          '<span class="vwas">Pedido: ' + esc(row[1]) + ' ' + esc(row[2] || 'und') + '</span>' +
+          '<span class="vwas">Pedido: ' + esc(Number(row[3]) > 0 ? fmtQty(Number(row[1]), row[2], row[3]) : row[1] + ' ' + (row[2] || 'und')) + '</span>' +
           '<div class="vacts"><button type="button" class="btn mint sm" data-act="reset">Voltar ao pedido</button><button type="button" class="btn pri sm" data-act="done">OK</button></div></div>';
       }
       html += '</div>';
@@ -858,9 +954,12 @@ pre.msg.none { color: var(--muted); }
   $('vclear').addEventListener('click', function () { V.checked = {}; saveChecks(); if (V.data) renderView(); toast('Marcações removidas'); });
   $('vcopy').addEventListener('click', function () {
     if (!V.data) return;
-    var lines = V.data.i.map(function (r, i) {
+    var lines = [], last = '', n = 0, both = V.data.hasL && V.data.hasB;
+    V.data.i.forEach(function (r, i) {
+      if (both && r[4] !== last) { last = r[4]; n = 0; if (lines.length) lines.push(''); lines.push(r[4] === 'b' ? 'BEBIDAS' : 'LIMPEZA'); }
+      n += 1;
       var q = vQty(i);
-      return (i + 1) + ' ' + r[0] + ' ' + q + (r[2] || 'und') + (q !== Number(r[1]) ? ' (pedido: ' + r[1] + ')' : '');
+      lines.push(n + ' ' + r[0] + ' ' + fmtQty(q, r[2], r[3]) + (q !== Number(r[1]) ? ' (pedido: ' + r[1] + ')' : ''));
     });
     copyText(lines.join('\n'), 'Lista copiada', null);
   });
@@ -876,25 +975,52 @@ pre.msg.none { color: var(--muted); }
     document.body.classList.toggle('viewing', on);
     $('view').hidden = !on;
     $('edit').hidden = on;
-    $('h1t').textContent = on ? 'Limpeza diária' : 'Pedido Diário de Limpeza';
+    $('h1t').textContent = on ? 'Pedido do dia' : cfg().h1;
     $('h1p').textContent = on ? 'Toque no quadradinho de cada item para marcar.' : 'Selecione os produtos e ajuste as quantidades com + e −.';
-    try { document.title = on ? 'LIMPEZA DIARIA' : 'Pedido Diário de Limpeza'; } catch (e) { /* ignora */ }
+    try { document.title = on ? 'Pedido do dia' : 'Pedido Diário'; } catch (e) { /* ignora */ }
   }
+  function setViewTitle(d) {
+    var nm = (d && d.name) || 'PEDIDO DIARIO LIMPEZA';
+    var nice = { 'LISTA DIARIA': 'Lista diária', 'PEDIDO DIARIO BAR': 'Pedido diário bar', 'PEDIDO DIARIO LIMPEZA': 'Pedido diário limpeza' };
+    $('h1t').textContent = nice[nm] || nm;
+    try { document.title = nm; } catch (e) { /* ignora */ }
+  }
+  function applyTab() {
+    var b = S.tab === 'beb';
+    $('tab-limp').setAttribute('aria-selected', String(!b));
+    $('tab-beb').setAttribute('aria-selected', String(b));
+    $('fname').textContent = curName();
+    if ($('edit').hidden === false) {
+      $('h1t').textContent = cfg().h1;
+      try { document.title = 'Pedido Diário'; } catch (e) { /* ignora */ }
+    }
+  }
+  function switchTab(t) {
+    if (S.tab === t) return;
+    S.tab = t; editId = null; delId = null; adding = false; query = '';
+    $('q').value = ''; $('zero-confirm').hidden = true;
+    save(); applyTab(); renderAdd(); renderList(); renderSummary();
+    window.scrollTo(0, 0);
+  }
+  $('tab-limp').addEventListener('click', function () { switchTab('limp'); });
+  $('tab-beb').addEventListener('click', function () { switchTab('beb'); });
   function route() {
     var m = /^#p=(.+)$/.exec(location.hash || '');
-    if (!m && window.__ORDER__ && Array.isArray(window.__ORDER__.i)) {
+    var wo = window.__ORDER__;
+    if (!m && wo && (Array.isArray(wo.i) || Array.isArray(wo.l) || Array.isArray(wo.b))) {
       // Arquivo LIMPEZA DIARIA recebido: o pedido já vem dentro do arquivo.
       V.tok = 'o' + hid(JSON.stringify(window.__ORDER__)); V.only = false; $('vonly').checked = false;
       setViewing(true);
       V.data = expandPayload(JSON.parse(JSON.stringify(window.__ORDER__))); loadChecks(); renderView();
+      setViewTitle(V.data);
       return;
     }
     if (!m) { setViewing(false); return; }
     V.tok = m[1]; V.data = null; V.only = false; $('vonly').checked = false;
     setViewing(true);
     decodePayload(V.tok).then(function (d) {
-      if (!d || !Array.isArray(d.i)) throw new Error('inválido');
-      V.data = expandPayload(d); loadChecks(); renderView();
+      if (!d || !(Array.isArray(d.i) || Array.isArray(d.l) || Array.isArray(d.b))) throw new Error('inválido');
+      V.data = expandPayload(d); loadChecks(); renderView(); setViewTitle(V.data);
     }).catch(renderViewError);
   }
   window.addEventListener('hashchange', route);
@@ -903,6 +1029,7 @@ pre.msg.none { color: var(--muted); }
   $('date').value = S.date; $('unit').value = S.unit; $('resp').value = S.resp; $('phone').value = S.phone || ''; $('hdr').checked = !!S.hdr; $('base').value = S.base || '';
   renderUnits(); renderList(); renderSummary(); save();
   route();
+  applyTab();
   // Quando publicado na internet, registra o funcionamento como app instalado (inclusive sem sinal).
   try {
     if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol) && window.top === window) {
