@@ -14,8 +14,8 @@
 <meta name="application-name" content="Pedido Diário">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Pedido Diário">
-<meta property="og:description" content="Pedido diário de limpeza e bebidas">
-<meta name="description" content="Pedido diário de limpeza e bebidas">
+<meta property="og:description" content="Pedido diário de limpeza, bebidas e estoque CD">
+<meta name="description" content="Pedido diário de limpeza, bebidas e estoque CD">
 <title>Pedido Diário</title>
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <style>
@@ -117,8 +117,8 @@ pre.msg.none { color: var(--muted); }
 .two-btn { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .zbox { margin-top: 14px; padding: 14px; border-radius: 16px; background: var(--danger-bg); display: grid; gap: 12px; }
 .zbox strong { color: var(--danger); }
-.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 5px; border-radius: 18px; background: var(--mint); }
-.tab { min-height: 48px; border: 0; border-radius: 14px; background: transparent; color: var(--mint-ink); font: inherit; font-weight: 800; font-size: 1.05rem; cursor: pointer; touch-action: manipulation; }
+.tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 5px; border-radius: 18px; background: var(--mint); }
+.tab { min-height: 48px; padding: 0 4px; border: 0; border-radius: 14px; background: transparent; color: var(--mint-ink); font: inherit; font-weight: 800; font-size: .98rem; cursor: pointer; touch-action: manipulation; }
 .tab[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); }
 .obanner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 16px; border-radius: 18px; background: var(--mint); color: var(--mint-ink); border: 1.5px solid var(--accent); font-weight: 700; }
 .obanner span { flex: 1 1 200px; min-width: 0; }
@@ -184,6 +184,7 @@ pre.msg.none { color: var(--muted); }
   <div class="tabs" role="tablist" aria-label="Tipo de pedido">
     <button type="button" role="tab" class="tab" id="tab-limp" aria-selected="true">Limpeza</button>
     <button type="button" role="tab" class="tab" id="tab-beb" aria-selected="false">Bebidas</button>
+    <button type="button" role="tab" class="tab" id="tab-cd" aria-selected="false">Estoque CD</button>
   </div>
   <div class="obanner" id="obanner" hidden>
     <span>Para compartilhar no WhatsApp, abra este app no navegador.</span>
@@ -349,9 +350,73 @@ pre.msg.none { color: var(--muted); }
     ['Sprite lata 350ml', 'FD', 0, 8], ['Sprite Zero 350ml', 'FD', 0, 6], ['Stella Pure Gold', 'FD', 0, 24],
     ['Tônica Antarctica', 'FD', 0, 12], ['Tônica Antarctica Zero', 'FD', 0, 12]
   ];
+  // Estoque CD: [nome, unidade, quantidade inicial, unidades por fardo]. Ajuste pelo lápis.
+  var CDV = 1;
+  var CDS = [
+    ['ADOÇANTE 75ML', 'und', 0, 0], ['ALCAPARRA EM CONSERVA', 'und', 0, 0], ['ALHO FRITO GRANULADO', 'und', 0, 0],
+    ['AMACIANTE DE CARNE', 'und', 0, 0], ['AMEIXA EM CALDA', 'und', 0, 0], ['AMÊNDOA INTEIRA', 'und', 0, 0],
+    ['AMÊNDOA LAMINADA 1KG', 'und', 0, 0], ['AMENDOIM GRANULADO', 'und', 0, 0], ['AMIDO DE MILHO 720G', 'und', 0, 0],
+    ['ARROZ ARBÓRIO', 'und', 0, 0], ['ARROZ BRANCO', 'und', 0, 0], ['ARROZ INTEGRAL', 'und', 0, 0],
+    ['ARROZ PARBOILIZADO', 'und', 0, 0], ['ASPARGOS BRANCO EM CONSERVA 500G', 'und', 0, 0], ['AZEITE 250ML', 'und', 0, 0],
+    ['AZEITE 500ML', 'und', 0, 0], ['AZEITONA PRETA S/CAROÇO', 'und', 0, 0], ['AZEITONA VERDE FATIADA', 'und', 0, 0],
+    ['AZEITONA VERDE S/CAROÇO', 'und', 0, 0], ['AÇAFRÃO', 'und', 0, 0], ['AÇÚCAR CRISTAL GRANULADO', 'und', 0, 0],
+    ['AÇÚCAR MASCAVO', 'und', 0, 0], ['AÇÚCAR REFINADO', 'und', 0, 0], ['AÇÚCAR SACHÊ 400X5', 'und', 0, 0],
+    ['BATATA APERITIVO', 'und', 0, 0], ['BATATA PALHA 1KG', 'und', 0, 0], ['BICARBONATO DE SÓDIO', 'und', 0, 0],
+    ['CAFÉ 250G', 'und', 0, 0], ['CALDO DE BACON', 'und', 0, 0], ['CALDO DE CARNE', 'und', 0, 0],
+    ['CALDO DE FRUTOS DO MAR 500G', 'und', 0, 0], ['CALDO DE GALINHA', 'und', 0, 0], ['CALDO DE LEGUMES', 'und', 0, 0],
+    ['CANELA EM PAU', 'und', 0, 0], ['CANELA EM PÓ 1KG', 'und', 0, 0], ['CASTANHA DE CAJU 500G', 'und', 0, 0],
+    ['CEBOLINHA CRISTAL', 'und', 0, 0], ['CEREJA 500G', 'und', 0, 0], ['CEREJA EM CALDA 100G', 'und', 0, 0],
+    ['CEREJA EM CALDA 2KG', 'und', 0, 0], ['CEREJA EM CALDAS 1,010 KG', 'und', 0, 0], ['CHANTYMIX', 'und', 0, 0],
+    ['CHOCO BALL', 'und', 0, 0], ['CHOCOLATE EM PÓ 50% CACAU 1KG', 'und', 0, 0], ['CHOCOLATE GRANULADO 1,1KG', 'und', 0, 0],
+    ['CHOCOLATE MEIO AMARGO BARRA 1KG', 'und', 0, 0], ['CHOCOLATE MEIO AMARGO BARRA 500G', 'und', 0, 0], ['CHÁ CAMOMILA', 'und', 0, 0],
+    ['CHÁ CARQUEJA', 'und', 0, 0], ['CHÁ CIDREIRA', 'und', 0, 0], ['CHÁ DE BOLDO', 'und', 0, 0],
+    ['CHÁ DE BOLDO DO CHILE', 'und', 0, 0], ['CHÁ DE ERVA DOCE', 'und', 0, 0], ['CHÁ HORTELÃ', 'und', 0, 0],
+    ['CHÁ MAÇÃ E CANELA', 'und', 0, 0], ['CHÁ MAÇÃ, CRAVO E CANELA', 'und', 0, 0], ['CHÁ PRETO', 'und', 0, 0],
+    ['CHÁ VERDE', 'und', 0, 0], ['COB 300G MORANGO', 'und', 0, 0], ['COBERTURA DE CHOCOLATE', 'und', 0, 0],
+    ['COBERTURA DE MORANGO', 'und', 0, 0], ['COCO FLOCADO 1KG', 'und', 0, 0], ['COGUMELO FATIADO', 'und', 0, 0],
+    ['COGUMELO INTEIRO', 'und', 0, 0], ['COLORÍFICO 1KG', 'und', 0, 0], ['COLORÍFICO 500G', 'und', 0, 0],
+    ['COUVERT OPCIONAL', 'und', 0, 0], ['CRAVO INTEIRO', 'und', 0, 0], ['CREME DE CEBOLA', 'und', 0, 0],
+    ['CREME DE LEITE 200G', 'und', 0, 0], ['DAMASCO SECO 1KG', 'und', 0, 0], ['DAMASCO SECO 500G', 'und', 0, 0],
+    ['DESMOLDANTE', 'und', 0, 0], ['DOCE DE LEITE', 'und', 0, 0], ['EMULTINA DE BAUNILHA 100ML', 'und', 0, 0],
+    ['ESPAGUETE VITARELA/FORTALEZA', 'und', 0, 0], ['ESSÊNCIA DE BAUNILHA 30ML', 'und', 0, 0], ['ESSÊNCIA DE BAUNILHA 960ML', 'und', 0, 0],
+    ['EXPRESSO CAFÉ C/LEITE', 'und', 0, 0], ['EXPRESSO CAPPUCCINO', 'und', 0, 0], ['EXPRESSO SUPREMO', 'und', 0, 0],
+    ['EXTRATO DE TOMATE 1,7KG', 'und', 0, 0], ['FARINHA A GRANEL PACOTES DE 10KG', 'und', 0, 0], ['FARINHA DE TRIGO C/ FERMENTO', 'und', 0, 0],
+    ['FARINHA DE TRIGO S/ FERMENTO', 'und', 0, 0], ['FARINHA DE TRIGO S/ FERMENTO 5KG', 'und', 0, 0], ['FARINHA PANKO', 'und', 0, 0],
+    ['FEIJÃO BRANCO', 'und', 0, 0], ['FEIJÃO CARIOCA', 'und', 0, 0], ['FEIJÃO FRADINHO/CORDA', 'und', 0, 0],
+    ['FEIJÃO PRETO', 'und', 0, 0], ['FERMENTO BIOLÓGICO', 'und', 0, 0], ['FERMENTO SACHÊ 10G', 'und', 0, 0],
+    ['FLOCÃO 500G', 'und', 0, 0], ['FLOCÃO 500G', 'und', 0, 0], ['FOLHA DE LOURO', 'und', 0, 0],
+    ['FRUTA CRISTALIZADA', 'und', 0, 0], ['FUMAÇA LÍQUIDA', 'und', 0, 0], ['FUNGHI SECO 1K', 'und', 0, 0],
+    ['FUNGHI SECO 250G', 'und', 0, 0], ['FUNGHI SECO 500G', 'und', 0, 0], ['GELATINA SACHÊ', 'und', 0, 0],
+    ['GELEIA DE MORANGO', 'und', 0, 0], ['GELEIA DE PIMENTA BIQUINHO', 'und', 0, 0], ['GENGIBRE', 'und', 0, 0],
+    ['GERGELIM DESPELICULADO', 'und', 0, 0], ['GERGELIM PRETO', 'und', 0, 0], ['GLUTAMATO', 'und', 0, 0],
+    ['GOIABADA 1KL', 'und', 0, 0], ['GOIABADA 400G', 'und', 0, 0], ['GRÃO DE BICO', 'und', 0, 0],
+    ['KETCHUP 3L', 'und', 0, 0], ['KETCHUP 5,5ML', 'und', 0, 0], ['LEITE CONDENSADO 395G', 'und', 0, 0],
+    ['LEITE DE COCO 500ML', 'und', 0, 0], ['LEITE EM PÓ 750G/700G', 'und', 0, 0], ['LEITE LÍQUIDO INTEGRAL', 'und', 0, 0],
+    ['LEMON PEPPER 1KG', 'und', 0, 0], ['LEMON PEPPER 500G', 'und', 0, 0], ['LENTILHA', 'und', 0, 0],
+    ['MAIONESE 3KL', 'und', 0, 0], ['MANTEIGA DA TERRA', 'und', 0, 0], ['MARGARINA 15KG', 'und', 0, 0],
+    ['MARGARINA 3KL', 'und', 0, 0], ['MASSA BAVETTE', 'und', 0, 0], ['MASSA DE LASANHA', 'und', 0, 0],
+    ['MASSA FARFALLE', 'und', 0, 0], ['MASSA FETTUCCINE', 'und', 0, 0], ['MASSA FUSILLI', 'und', 0, 0],
+    ['MASSA LINGUINE', 'und', 0, 0], ['MASSA PENNE', 'und', 0, 0], ['MASSA RIGATONE', 'und', 0, 0],
+    ['MASSA SPAGHETTI', 'und', 0, 0], ['MASSA VERMICELLI', 'und', 0, 0], ['MELADO DE CANA', 'und', 0, 0],
+    ['MILHO VERDE 2,7KG', 'und', 0, 0], ['MILHO VERDE LATA', 'und', 0, 0], ['MILHO VERDE SACHÊ', 'und', 0, 0],
+    ['MOLHO BARBECUE 3,5KG', 'und', 0, 0], ['MOLHO DE ALHO', 'und', 0, 0], ['MOLHO DE OSTRA 500ML', 'und', 0, 0],
+    ['MOLHO DE PIMENTA', 'und', 0, 0], ['MOLHO DE PIMENTA ARTEZANAL', 'und', 0, 0], ['MOLHO INGLÊS 150ML', 'und', 0, 0],
+    ['MOLHO SHOYO 150ML', 'und', 0, 0], ['MOLHO SHOYU 5L', 'und', 0, 0], ['MOSTARDA 1KG', 'und', 0, 0],
+    ['MOSTARDA 3KG', 'und', 0, 0], ['MOSTARDA DIJON BEAUFOR 1001KG', 'und', 0, 0], ['NESCAU 2K', 'und', 0, 0],
+    ['NOZES', 'und', 0, 0], ['ÓLEO DE ALGODÃO 900ML', 'und', 0, 0], ['ÓLEO DE GERGELIM 900ML', 'und', 0, 0],
+    ['ÓLEO DE GERGELIM TORRADO', 'und', 0, 0], ['ÓLEO DE SOJA 900ML', 'und', 0, 0], ['ORÉGANO', 'und', 0, 0],
+    ['OVOS DE CODORNA', 'und', 0, 0], ['OVOS DE GALINHA', 'und', 0, 0], ['PALMITO INT', 'und', 0, 0],
+    ['PIMENTA BIQUINHO', 'und', 0, 0], ['PIMENTA DO REINO EM GRÃO 1K', 'und', 0, 0], ['PISTACHE EM GRÃO 1KG', 'und', 0, 0],
+    ['QUEIJO RALADO', 'und', 0, 0], ['SAL FINO', 'und', 0, 0], ['SAL GROSSO', 'und', 0, 0],
+    ['SAL SACHÊ 400 UND', 'und', 0, 0], ['SARDINHA ENLATADA', 'und', 0, 0], ['TEMPERO ALECRIM 1KG', 'und', 0, 0],
+    ['TEMPERO CHIMICHURRI', 'und', 0, 0], ['TOMATE SECO', 'und', 0, 0], ['TRIGO PARA KIBE', 'und', 0, 0],
+    ['UVA PASSAS', 'und', 0, 0], ['VINAGRE 5L', 'und', 0, 0], ['VINAGRE BALSÂMICO 500ML', 'und', 0, 0],
+    ['VINAGRE DE ÁLCOOL 250ML', 'und', 0, 0], ['VINAGRE DE MAÇÃ 250ML', 'und', 0, 0], ['YAKISOBA', 'und', 0, 0]
+  ];
   var TABS = {
     limp: { name: 'LIMPEZA DIARIA', short: 'Limpeza', h1: 'Pedido Diário de Limpeza', view: 'Limpeza diária', head: 'Pedido de limpeza', seed: SEED },
-    beb:  { name: 'BEBIDAS', short: 'Bebidas', h1: 'Pedido Diário de Bebidas', view: 'Bebidas', head: 'Pedido de bebidas', seed: BEV }
+    beb:  { name: 'BEBIDAS', short: 'Bebidas', h1: 'Pedido Diário de Bebidas', view: 'Bebidas', head: 'Pedido de bebidas', seed: BEV },
+    cd:   { name: 'ESTOQUE CD', short: 'Estoque CD', h1: 'Pedido Diário de Estoque CD', view: 'Estoque CD', head: 'Pedido de estoque CD', seed: CDS }
   };
 
   var uid = 0;
@@ -362,7 +427,8 @@ pre.msg.none { color: var(--muted); }
     return {
       day: todayISO(), date: todayISO(), unit: '', resp: '', phone: '', hdr: false, mode: 'file', v2: true, base: '', tab: 'limp',
       items: SEED.map(mkItem),
-      bev: BEV.map(mkItem), bevV: BEVV
+      bev: BEV.map(mkItem), bevV: BEVV,
+      cd: CDS.map(mkItem), cdV: CDV
     };
   }
   function mkItem(r) { return { id: newId(), name: r[0], un: r[1], qty: r[2], pack: r[3] || 0 }; }
@@ -378,10 +444,12 @@ pre.msg.none { color: var(--muted); }
       if (!Array.isArray(raw.bev) || !raw.bev.length || raw.bevV !== BEVV) {
         raw.bev = BEV.map(mkItem); raw.bevV = BEVV;
       }
-      raw.tab = raw.tab === 'beb' ? 'beb' : 'limp';
+      if (!Array.isArray(raw.cd) || !raw.cd.length || raw.cdV !== CDV) { raw.cd = CDS.map(mkItem); raw.cdV = CDV; }
+      raw.tab = (raw.tab === 'beb' || raw.tab === 'cd') ? raw.tab : 'limp';
       if (raw.day !== t) {
         raw.items.forEach(function (it) { it.qty = 0; });
         raw.bev.forEach(function (it) { it.qty = 0; });
+        raw.cd.forEach(function (it) { it.qty = 0; });
         raw.day = t; raw.date = t;
       }
       if (!raw.v2) { raw.mode = 'file'; raw.v2 = true; }
@@ -398,16 +466,21 @@ pre.msg.none { color: var(--muted); }
   var editId = null, delId = null, adding = false, query = '', toastTimer = null;
   var curMsg = '', seq = 0;
 
-  function cfg() { return TABS[S.tab === 'beb' ? 'beb' : 'limp']; }
-  function items() { return S.tab === 'beb' ? S.bev : S.items; }
-  function setItems(arr) { if (S.tab === 'beb') S.bev = arr; else S.items = arr; }
+  function cfg() { return TABS[S.tab === 'beb' ? 'beb' : S.tab === 'cd' ? 'cd' : 'limp']; }
+  function items() { return S.tab === 'beb' ? S.bev : S.tab === 'cd' ? S.cd : S.items; }
+  function setItems(arr) { if (S.tab === 'beb') S.bev = arr; else if (S.tab === 'cd') S.cd = arr; else S.items = arr; }
   function selected() { return items().filter(function (i) { return i.qty > 0; }); }
   function selOf(arr) { return arr.filter(function (i) { return i.qty > 0; }); }
-  function totalSel() { return selOf(S.items).length + selOf(S.bev).length; }
+  function totalSel() { return selOf(S.items).length + selOf(S.bev).length + selOf(S.cd).length; }
   // Nome do que é enviado: só bebidas, só limpeza ou os dois juntos.
-  function listName(hasL, hasB) { return hasL && hasB ? 'LISTA DIARIA' : hasB ? 'PEDIDO DIARIO BAR' : hasL ? 'PEDIDO DIARIO LIMPEZA' : null; }
+  function listName(hasL, hasB, hasC) {
+    var n = (hasL ? 1 : 0) + (hasB ? 1 : 0) + (hasC ? 1 : 0);
+    if (n > 1) return 'LISTA DIARIA';
+    return hasC ? 'ESTOQUE CD' : hasB ? 'PEDIDO DIARIO BAR' : hasL ? 'PEDIDO DIARIO LIMPEZA' : null;
+  }
   function curName() {
-    return listName(selOf(S.items).length > 0, selOf(S.bev).length > 0) || (S.tab === 'beb' ? 'PEDIDO DIARIO BAR' : 'PEDIDO DIARIO LIMPEZA');
+    return listName(selOf(S.items).length > 0, selOf(S.bev).length > 0, selOf(S.cd).length > 0) ||
+      (S.tab === 'beb' ? 'PEDIDO DIARIO BAR' : S.tab === 'cd' ? 'ESTOQUE CD' : 'PEDIDO DIARIO LIMPEZA');
   }
 
   /* ---------- Link do pedido: o pedido vai dentro do endereço (sem servidor) ---------- */
@@ -472,13 +545,14 @@ pre.msg.none { color: var(--muted); }
       return pack ? [it.name, it.qty, it.un || 'und', pack] : [it.name, it.qty, it.un || 'und'];
     });
   }
-  // O pedido leva as duas abas: l = limpeza, b = bebidas (só as que tiverem itens).
+  // O pedido leva as três abas: l = limpeza, b = bebidas, c = estoque CD (só as que tiverem itens).
   function payload() {
     var u = S.unit.trim(), ui = UNITS.indexOf(u);
     var o = { d: S.date, u: ui >= 0 ? ui : u, r: S.resp.trim() };
-    var l = rowsOf(S.items, SEED), b = rowsOf(S.bev, BEV);
+    var l = rowsOf(S.items, SEED), b = rowsOf(S.bev, BEV), c = rowsOf(S.cd, CDS);
     if (l.length) o.l = l;
     if (b.length) o.b = b;
+    if (c.length) o.c = c;
     return o;
   }
   function expRows(rows, seed, sec) {
@@ -493,25 +567,26 @@ pre.msg.none { color: var(--muted); }
   function expandPayload(d) {
     var l = d.l, b = d.b;
     if (!l && !b && Array.isArray(d.i)) { if (d.t === 'b') b = d.i; else l = d.i; }   // pedidos no formato antigo
-    var L = expRows(l, SEED, 'l'), B = expRows(b, BEV, 'b');
-    d.i = L.concat(B);
-    d.hasL = L.length > 0; d.hasB = B.length > 0;
-    d.name = listName(d.hasL, d.hasB) || 'PEDIDO DIARIO LIMPEZA';
+    var L = expRows(l, SEED, 'l'), B = expRows(b, BEV, 'b'), C = expRows(d.c, CDS, 'c');
+    d.i = L.concat(B, C);
+    d.hasL = L.length > 0; d.hasB = B.length > 0; d.hasC = C.length > 0;
+    d.name = listName(d.hasL, d.hasB, d.hasC) || 'PEDIDO DIARIO LIMPEZA';
     if (typeof d.u === 'number') d.u = UNITS[d.u] || '';
     return d;
   }
   function linkHead() { return curName() + (S.resp.trim() ? ' - ' + S.resp.trim() : ''); }
 
   function textList() {
-    var L = selOf(S.items), B = selOf(S.bev);
-    if (!L.length && !B.length) return '';
+    var L = selOf(S.items), B = selOf(S.bev), C = selOf(S.cd);
+    if (!L.length && !B.length && !C.length) return '';
     function fmt(arr) { return arr.map(function (it, i) { return (i + 1) + ' ' + it.name + ' *(' + fmtQty(it.qty, it.un, it.pack) + ')*'; }); }
-    var both = L.length > 0 && B.length > 0, out;
-    if (both) out = ['*LIMPEZA*'].concat(fmt(L), ['', '*BEBIDAS*'], fmt(B));
-    else out = fmt(L.length ? L : B);
+    var secs = [['LIMPEZA', L], ['BEBIDAS', B], ['ESTOQUE CD', C]].filter(function (x) { return x[1].length; });
+    var both = secs.length > 1, out = [];
+    if (both) secs.forEach(function (x, k) { if (k) out.push(''); out.push('*' + x[0] + '*'); out = out.concat(fmt(x[1])); });
+    else out = fmt(secs[0][1]);
     var body = out.join('\n');
     if (S.hdr) {
-      var head = (both ? 'Lista diária' : B.length ? 'Pedido de bebidas' : 'Pedido de limpeza') + ' ' + fmtDate(S.date) + (S.unit.trim() ? ' - ' + S.unit.trim() : '');
+      var head = (both ? 'Lista diária' : C.length ? 'Pedido de estoque CD' : B.length ? 'Pedido de bebidas' : 'Pedido de limpeza') + ' ' + fmtDate(S.date) + (S.unit.trim() ? ' - ' + S.unit.trim() : '');
       if (S.resp.trim()) head += '\nResponsável: ' + S.resp.trim();
       return head + '\n\n' + body;
     }
@@ -550,13 +625,14 @@ pre.msg.none { color: var(--muted); }
     $('phone-wrap').hidden = mode === 'file';
     $('copy').hidden = mode === 'file';
     $('share').textContent = mode === 'file' ? 'Compartilhar ' + curName() + ' no WhatsApp' : 'Compartilhar pedido pelo WhatsApp';
-    var nl = selOf(S.items).length, nb = selOf(S.bev).length, tot = nl + nb;
+    var nl = selOf(S.items).length, nb = selOf(S.bev).length, nc = selOf(S.cd).length, tot = nl + nb + nc;
     $('fname').textContent = curName();
     seq += 1;
     if (mode === 'file') {
       var parts = [];
       if (nl) parts.push('Limpeza: ' + nl + (nl === 1 ? ' item' : ' itens'));
       if (nb) parts.push('Bebidas: ' + nb + (nb === 1 ? ' item' : ' itens'));
+      if (nc) parts.push('Estoque CD: ' + nc + (nc === 1 ? ' item' : ' itens'));
       paint(tot ? '📎 <strong>' + curName() + '.html</strong>\n' + esc(parts.join(' · ')) + (S.resp.trim() ? '\n' + esc(S.resp.trim()) : '') : 'Nenhum item selecionado ainda.', '', !tot);
       ['share', 'wa'].forEach(function (id) { var a = $(id); a.setAttribute('href', '#'); a.setAttribute('aria-disabled', tot ? 'false' : 'true'); });
       return;
@@ -898,11 +974,11 @@ pre.msg.none { color: var(--muted); }
     if (d.r) meta.push('<div><span class="k">Responsável</span><b>' + esc(d.r) + '</b></div>');
     $('vmeta').innerHTML = meta.join('');
     $('vmeta').hidden = !meta.length;
-    var html = '', lastSec = '', both = d.hasL && d.hasB;
+    var html = '', lastSec = '', both = ((d.hasL ? 1 : 0) + (d.hasB ? 1 : 0) + (d.hasC ? 1 : 0)) > 1;
     d.i.forEach(function (row, idx) {
       var on = !!V.checked[idx];
       if (V.only && on) return;
-      if (both && row[4] !== lastSec) { lastSec = row[4]; html += '<div class="vsec">' + (row[4] === 'b' ? 'Bebidas' : 'Limpeza') + '</div>'; }
+      if (both && row[4] !== lastSec) { lastSec = row[4]; html += '<div class="vsec">' + secLabel(row[4]) + '</div>'; }
       var chg = vQty(idx) !== Number(row[1]);
       html += '<div class="vitem" data-i="' + idx + '"><div class="vrow" data-on="' + on + '">' +
         '<button type="button" class="vmain" data-act="tog"><span class="n">' + (idx + 1) + '</span><span class="vn">' + esc(row[0]) + '</span></button>' +
@@ -954,9 +1030,9 @@ pre.msg.none { color: var(--muted); }
   $('vclear').addEventListener('click', function () { V.checked = {}; saveChecks(); if (V.data) renderView(); toast('Marcações removidas'); });
   $('vcopy').addEventListener('click', function () {
     if (!V.data) return;
-    var lines = [], last = '', n = 0, both = V.data.hasL && V.data.hasB;
+    var lines = [], last = '', n = 0, both = ((V.data.hasL ? 1 : 0) + (V.data.hasB ? 1 : 0) + (V.data.hasC ? 1 : 0)) > 1;
     V.data.i.forEach(function (r, i) {
-      if (both && r[4] !== last) { last = r[4]; n = 0; if (lines.length) lines.push(''); lines.push(r[4] === 'b' ? 'BEBIDAS' : 'LIMPEZA'); }
+      if (both && r[4] !== last) { last = r[4]; n = 0; if (lines.length) lines.push(''); lines.push(secLabel(r[4]).toUpperCase()); }
       n += 1;
       var q = vQty(i);
       lines.push(n + ' ' + r[0] + ' ' + fmtQty(q, r[2], r[3]) + (q !== Number(r[1]) ? ' (pedido: ' + r[1] + ')' : ''));
@@ -979,16 +1055,17 @@ pre.msg.none { color: var(--muted); }
     $('h1p').textContent = on ? 'Toque no quadradinho de cada item para marcar.' : 'Selecione os produtos e ajuste as quantidades com + e −.';
     try { document.title = on ? 'Pedido do dia' : 'Pedido Diário'; } catch (e) { /* ignora */ }
   }
+  function secLabel(k) { return k === 'b' ? 'Bebidas' : k === 'c' ? 'Estoque CD' : 'Limpeza'; }
   function setViewTitle(d) {
     var nm = (d && d.name) || 'PEDIDO DIARIO LIMPEZA';
-    var nice = { 'LISTA DIARIA': 'Lista diária', 'PEDIDO DIARIO BAR': 'Pedido diário bar', 'PEDIDO DIARIO LIMPEZA': 'Pedido diário limpeza' };
+    var nice = { 'LISTA DIARIA': 'Lista diária', 'PEDIDO DIARIO BAR': 'Pedido diário bar', 'PEDIDO DIARIO LIMPEZA': 'Pedido diário limpeza', 'ESTOQUE CD': 'Estoque CD' };
     $('h1t').textContent = nice[nm] || nm;
     try { document.title = nm; } catch (e) { /* ignora */ }
   }
   function applyTab() {
-    var b = S.tab === 'beb';
-    $('tab-limp').setAttribute('aria-selected', String(!b));
-    $('tab-beb').setAttribute('aria-selected', String(b));
+    $('tab-limp').setAttribute('aria-selected', String(S.tab !== 'beb' && S.tab !== 'cd'));
+    $('tab-beb').setAttribute('aria-selected', String(S.tab === 'beb'));
+    $('tab-cd').setAttribute('aria-selected', String(S.tab === 'cd'));
     $('fname').textContent = curName();
     if ($('edit').hidden === false) {
       $('h1t').textContent = cfg().h1;
@@ -1004,6 +1081,7 @@ pre.msg.none { color: var(--muted); }
   }
   $('tab-limp').addEventListener('click', function () { switchTab('limp'); });
   $('tab-beb').addEventListener('click', function () { switchTab('beb'); });
+  $('tab-cd').addEventListener('click', function () { switchTab('cd'); });
   function route() {
     var m = /^#p=(.+)$/.exec(location.hash || '');
     var wo = window.__ORDER__;
@@ -1038,5 +1116,6 @@ pre.msg.none { color: var(--muted); }
   } catch (e) { /* ignora */ }
 })();
 </script>
+
 </body>
 </html>
