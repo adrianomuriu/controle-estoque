@@ -1,0 +1,1260 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Pedido Diário</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#176b4d">
+<meta name="color-scheme" content="light dark">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAYN0lEQVR42u2deXxV13HHZ+ace98uCQmEQAgEAsRqbLCBggk2eInr2mATm6SxE8fLJyZpmq1p0y35ZGuaNmkaN2mTuq6bECeOY2zHTr1hB294AQNhMWYHsxgQ2vX2e89M/7gSYRHUZnl6ks7vI/TXE++9e793zpw5Z34HB3/6OrCyOlORvQRWFiArC5CVBcjKAmRlZQGysgBZWYCsLEBWVhYgKwuQlQXIygJkZWUBsrIAWVmArCxAVlYWICsLkJUFyMoCZGUBsrI6A+l+8S2l819hhYAWoL5Bj0IseKwVEDDS5xnq6wAhokJhFt+ISCHfFjShJmEBEQtQb6UHAEwyw+mcyXvADAUKCAJEynUoGqJoGBD7MEO6D9MjzH5b0m9OijGAnTwVagATk8xgm9LlcV0aR6K+ypDuw7HHb+nwmttBEbo98zWF2WtsAxanorSvxqG+CJAIKuW1dfitSVCEiMDSUwmYKPJbk+hqpzQhvl/QKAi2DnSm9IhnTDIrzEgEPfjYCyCRMJtkVjyDSvW9IER9cNKOyJ4nXtE87oji+ex5gAhih7DzPekmhQAsfIazbgIkYBFhhh4pH3ZTwwRhRhEiEMIzxBpRIQkAs+FiCmPFApAmRaQy+WxLqsM3vkKltEJ53/NuBBCfKJfHQk3Z39NHAkjnsqwZ/fefjgkAgmHOG98hFQ+Fo+EoCueNsQCBgGgkrXRrOtmeSQ0rr5w5euJFI8aOraoZmCil95/B5E2+vKRsxapXf/Tw0oZMc6mT8HwPe2gsExFH6bZsujJW/ulrP3r59FnN7a2ucs8giLVlUtsP7Vu/b8e63dt2NrwbctyBiVJm9tjv2RUT3aP5roQcN+/5B1sbJgyr/dil11wx6ZJhAwbGQ5GwG6IzuuvGsFLU3tgc1o4xRiny/J58QpQiY0xYO9NGjZs1amLw8c5sJMx6uVQ225Rsf/HttUtXPrNy+8byeEnUDee9fA9me7oH6Qm7bkcmnc7n756/8DNXLaodODTiuse9pCv+v3f57CkVMsYwc/EMYcxsjAk+Hr3PCISdvzHihCJOaGCidFTl0CsmXfLzlc9+/5mHmlMdFfFE3vO4h4bsngGIRaJuqLGjNeqGv/Phu2+ZdXVFvAQAmDtTBOwadeT9/88AkIjGSmIlePjdHl8QR0BkLomVJKKxzo8nZ5CFg4CAiIAAoqPUqMqhX7r2IxOqa7/80I/3NR+uKinP+X6PTBl0T9HTlGxPROJfWXjbJ+ctIETP94mIEOnsorEmLSIX1I2rHz5q41vrHMdJZ9OIqoeiLDuOw5lM/fBRF9SNExFN+swSMuwqr0sQz0QibuhD0y+LuKEv/uKedxoPDy4tz3j5wj8uKj69vtB5j3ZT2QwgfOGaxZ+/+mYW9o1xtUOIZ5/tEqJvTCwcyRvv+dUrU6lk2YAKz/c6H+JCBh7ERDzR0tgQDUe+8NE7p4+b7BujlTrL74idxQ7yjG/YjB86oiJetnL7huZUR2kk6hlT4BlDoQFCJE10pKN18cz5f3P9x1zHMcaEHPdcrh6AGObaIcNQqRfWvJbOpELhsFbaUVop7Sitz+dP8BZEBCitzY3GN3/58U/d+sGFWikkVHTOKreKiEV8NpNq6trSqVe2bXC1Q0gMgn11CGOQqBM63No4cdjIu+ctqIiXpPO5qBs65yUlz/gDYokvLr5DBO579OcHOtrB9wtXVwxuoNbVidI7brjli4vvSESjnvE1neOR1FE653sK8fa51765Z8vTG1bVVlSl85lCTsp0YddNUJhzfv76qZdePLLeZxPS7vl4I0dpz/iJaPRrt3/mgjHjnn7j5V0H9qZyGQLk8782xCCxUGRU9fAPzpizaM6VAOAZ31Hn5VKHtJPzvZGDhtww7QMvbF6X9XKayBSwVF1QgFylWzPJYRVVfzR6oiKVN15In6/01lGamVlk0ZwrF825sjXZnsqkEakwuXMsEi2LlwCAbwwhnid6jpmX8NQRY6eMqFu3Z9vQsoFpL1ew6acuZPqslerIpGeNnTy6ahginu8vSUQgkvPyhFQaSwR3tGBf1vN9Fna0Q+d5QFGIhFRXVX3hiLFvbN+ESCCFKwoVOAcCYVM/uGbYgEHBjOm8D5qIIccVEWaWwl1XQUCtFKIuzLzEMA+IJuqrapTSnvGxT+ZAiGiYSevhg6pioYgwE1LhFvlVz5SCCpFZIvpsFFBN+eB4OJrzfa2ImfvafiBCZDaO0mXROAAYEcR+0DdVmA4QAAAojcYijusbnwp5W6Hwa2AiAGDhOS+XtuArYra12coCZGUBsrIAWVmArKwsQFYWICsLkBVYh7LikOGuJkM8XecUIZGtTlqAThCzvMddfCwsAnZ5xAJ0XOxRRIbNwbbmvNd9f6CAIGAsFK4sGRCU8y1DFqAg9rAiak61L1v1wq9XrWhoa6buQpGIKKT6oSNun3vtB8Zd6ChtGbIAgREWkWw+9zcP/eQnzy4DxKgbEpGTdzULAAis2bX5sbUv33v7X948cz4hsohCOz/ozwCxcZXzw+XLfvna8kg0dtOMedPrJgbmKMdGFxEhpIyXe+zNF1/dtumrj/x3/ZAR00bWe8b03f0/FiD4/7clBPHj9Z1vtbc0feyKG7598yeHlg1kEeo+DYIP1E+5495vr9+xef3eHdNG1gctLye/mIve3wl72+hbjAAxACJ1ZNPt2TQYM7W2fmjZQM/4gCBdhSthERBN6uuP3t+eTX/txjvqBlev3/L7xmQrCxOSYT5hz5FhJioe15dTZn5EhBagc7CtOHgWEfK+d7RjMIhMIiIEILhs9Yv3LF/W1trk+X4mnwc3LCyEdHKgERFF1JRsyxufipAh7ByOByXKsGtqaQE6l4MaSOBzKggoAkS0es/bf/HgD9O5TF117aJL5v7rMw+Blyeirpf+4W8RMePlvvX40sfWvKhQQ1EazWlSyVxm5uiJX73hE3WV1UEftAXoHPSYS1c3eN74SOKzH9LOO42HPvU//9LQ1hJ23Hs+/vm54y/65yd/CcIYoIN/qEMSoWf8X7y6/F+eWOqEwsWcBTlaP7DiibJo7GuL7iyLxH0257yZtX8BRIjgeSXhWNbLf/GBe1ztfP+WzyqiIx2tX/jFv63fu90l/Y0P3XnFpEtyvucbA0hyYjrFBKo9k1q+cTUDVZVW5Pw8FmvNPR6JprOZV3e8tfPwuxePrDeGLUBnNR/J+R6Ewq3pjr99+N5/f3ZZWaK0srTi9jnXfO/pXz325kuudpfMv+Guy65XSFmTQ0Q4yVcgyKNiocjk4aMeeuXJxmSrFPFMLG/8XHvLyEFVw8oHBZ3gdgg768m88UOOO6m6dkhF5cHGwz975ek1u7e8vuMtZrnuotlfvv7WkOMyn/JJJSQRCTvux+dcs+3gvufeWoNYpMcwEWHW966+eO7nrrq5qrScRWwOdNYfThEYwyKf+MC1PvNXfn3vzob9+5oPZ/O52WMnf+umuyriJb7xicgzRoThpHahow55NeWDv/unf/bGjs2CRTrBQcS8700aVje2alhX55ONQGdxPVnYiGCXJ+Uts67K5vPfevynh5sOjx428ps33TWmqiaVyzhK+8aPhyKO0ghgjJHjdzkFt4GZK0sGXDd1dvHfEmbGs3Zq69cAIQCAuMohRAFsSXcY5ogb+sxVi+oGV7+8df0VE6ddNn5qkNwEf9KUbE/mswIQclwMDjw4yWjBM4aFschd9gGds3Yx6+8AEYDHHHbcMYOHQSj08BsrJlSPnDJ8NAtPrR07d/xFHZnUWwd2O8oJXOuY+ZevP7fxne3hRNnYqhpENMacvIvIUQrArpD1hyEMEQRZePGM+Su3bVr91urP/PR7IwZWsYgxhhAFQJNCgCChyXn+lkN7vWzmzitvnFo7tmv7ot3R0Y9zIEdT3piZoyd+7cbbvxMKbdy9bcu+XSIsgNI5DBEEFWcQIlVZMmDeH135lYW3VZWWG2ZFNtL0+yTaVdpjc82UmZeMGve7t9ceam3WRCdsCEKAYBtr/ZDhV0ycBgCGjaXHAvSH5SEjUhEvvXn6PHgP+18RwNJjATouwChEFvHZP/0CaLBY1i8OarcAncGKGKG2t8o2FlpZgKysLEBWFiArC5CVBcjKygJkZQGyAltIhNPtbTXCp99HE1Si7e20AEG3zcjvpTmBmbFX9XRagAoRe4KdnelcNuPlT7NPLxGOBGdyWW8XC9DxHaX53Krdby/fsOpAS2PnIHVsWw5C0KU6sXrktRfNHjO4OuiAtquq/R2g4DhZELl3xeNff/T+puaDoFw4zRFGiPe/9OSPP/GlGaMniDAh2TjUrwHyjXG1fnjVim8/sbQ12XbZlEvrqqoJ6ISmnGBPdNbLr9m1dePuzX/1qx/9151/Pbaqxje+VnYBvx/7AwWpzxPrXj3UdPjyKTN+8NHPTq6pO01+88Crz371kfte3rxu7Z5tY6tqEOlUL5ai6DmxAJ1nfyAi6simG5OtkMted8GsyTV1RlhAVFdbxdHWu2WrVhjmj8666qE3VuzctWV/82EWUUSGWR0PkM+mGHzvWIQBdF8pOhS1P1CQ3BwtAqF0tlqICAgj0vp3tv/Fgz9qaGnadmivzwbckM98jLXLcSbARWJUgIjUh2aLvaGQCAAAhg2KECpEERBEOtTWtOT+7za2tymta8oHv7l7Kwh3a2tHiAj48OoXfrFyOZJgD9XfCSnr5eKR6C2zrv7jKTNNbzMj650AIRphn42rHADwjAEARZjKZT/78x9s2LczZ7wf3Pq5xTPnP7LmRfA8Ov7Q62BGBgBPrX99yX3/mPYN9WgapIhS2fSaHZsjd3z5sgkXmd7gANTb/YHyZZG4JvXD5x5xiD45b6FnfM/wNx//2eNrX2GRJfMWfGz21a7j5H3vZH8gI6IRWlIdD616vimdGlZeGRjm9ZxdhHK13t/W+NAbz10+4aI+UK8qan8gz/chFG7Ppr739IPfWnZfPJooj5XeNOPy/3j+0X9/9tfC8sdTZv79wtsS4WgqlwHBk/0ssKupOR6KSS6niLTS2GNjsbjKyXt5z/Ni4ejRqYAF6LxdbwAQ0aRTuUxHLteSSn7vqQdX7d7y1O9XdqRT08dM/qcPf7qypNwIKwwMCaRbf6BYOHLX5det3rnpzT3bFVFPTaWRgFmM8a+cdMmS+QtP5VpsATpncpUG3wOAu+ctzHjed//3gc0Hdu9pOtSSah81ZPg/feRTY4fUeMYoQiPB7BgQjuMIEQNfzinDR//o9i+9vGWDCPcUQESY9/2oG547/sK6ymoWod4/mS/e1mYjRgCANAsPSpR97qoPJTOpnzz/WEdbY1l55d9ed+vccRemcllHKc+Io7WjNHb+1XHV6mBYE5GLa8ddXDsOisaKv2800RZvBHKU7prAMwBUlgz4zuIl1QMGrt6+cd7kGbdf9icAEAuFgxfnfd8zRkCISADxpNyiM6MqAn+7YGTWfaUFu0j9gXzmiBManBgAWj23afXssZPrhwxXRJ//4OLM/BujIbehozUo5goAG35qw+tbD+1DN1RTXkmIxpiTRwdH6yJJWvvSQq8uzvmXgIjIgmlznn977XNvvticap9WW++xr4Bibjjj51iEAAUQAHJe/pm3VjUcOXjF1DmXjBoPAAyiurtJdom+3/gDkTZsFky79J2mg//69K9/v3vb2q0bAADYABsgBURwtGKIGEsMuGT81G8sumPUoKHBGRr21vZrgBBBEfnG//Orbrp45LjH1rzcmk4GLvRyzJp6MOEixBEDh9w255ohZRUsgjbSWIC6HFsUM88aM3nWmMnvZRNIcNSNvakWoGMPz0LDRgRUV8p88vaaoG1DEVl6LEDdAKJQnX43FiKSbXCzjYVWFiArC5CVlQXIygJkZQGysgBZWVmArKC/H/vN/99Jp4Ro178sQNDtClfQg3f6DioRMcwWIwtQNw4vARO+MRgwJN33WynEPtDkYAE6x/QIyN6mhrV7tr7bfISCU4yPh0RAFGL9kBGTa+oq4iUAx/YVWvVXgCTwQiC1fNOqry67741tG0AATuWUiOiEIh+eMf/rH7qrdlAVM1u/ROsPZByl39j19uceuGfL7m1jauoGJsq63MdOxMcz/v7mI0t/95ggfPcjfza4dIBvTK84dN0CdL4Gr2Cg+unLT255d+/4kfXfWHTnn1w4O5PPKTrBekyMiAh//6lf/ecLT/zq9edvmj7v+qmzAa1ZYv/2B1JE6Xxuf9MRSLbfMuvqGy+ei4ghxzlVo8xfXXfrK9s3/u7Nl3cc3g8gChXLif5AEvgrFvu5372M+uJNoo2wEQNEYcdBRMMGAOgkhygRERCHVFg7AOAHFaNuupwBi/8oZ7QR6JxfTBGfuavX55TPp2HDIgBymuQ55WUOJVtEBIvA6K67L4tGeFC0tCySQAtQkTyWXUk3tmdTGxp2Zf1cETuqoIAcaG8YN3DEkERF0H5S/P4vfd3KVAAQfTEHOpqS+YyrdDHXGjWpjJc70NFYEo7GnAgLF39G1D+8cAU89gHEVY4wF+3HVErl/LzHftfKH9ohrCi60BXS0Hj5kVRLRy6N3XpwFsdIzR4gQlW8IuqEBXpHGaJ3nNZzTBvqKbIHETk1F4hYES2dVDmqMd0mxbrUgQAsXBqJD4mVK6TuSqYWoPeVUXZxg4gsYtiAdLd/STq3eigkAORTYISIg+MDBsVKu2b5RelsDHDUNKi32CcWbwRSiACIwq7WhAhE0F0dCERIwNG6izs8rQF+sfvqikjvqiUWqT+QYQ45biwUFqVW796y68i7owYN7XZTmSCymJVbNh5oaQSiikQJIjJ3M38JltJ6RdIGFqCzvIgs4io9b8K0ZzatfuClJw3z5eOn+mzopMDOAJ7vLV359Ppdb4+vG39xbX1gLt7tWQL2GKj+MoQpRSxy25xrNu/fvfSl3z648pkHX/ztKfJoBAEVjQ4pH/yVBbdNqqkDAOuy0O8BQjLMIe18Z/GS8dW1j619KZPLHT8p65q5AGiiwSXld89bcNmEaYDCXe70Vv07iSZiEddxlsxfuGT+grZ0Gk/yyAwW2BExEYkCgM+skMju4rAAHe21EADDhpBKolE4lUEQADMLgLI7gCxA3fiUoTpdmVDAJj0WoH7kiwu2M9XKygJkZQGy6n8A/WFfsm0iPR9XF/swQNL1my075/UcF+y7ABGib/zmZIeAKKLiX9rsPaEHAKA1lUzlc1ppAe6LADFrpdiY3Q3vtmfSeMx53lZnI2ZWpFhkd+PBVCYd0k4hLywV+EEh5Ww9tHdfU4OICNsIBOfi7DpGxOZU+5aD7wgbhaqQF7agAHnGL43GNu/fs/XgXlsbPGcAAQPA9kP71u7ZGg6FubBxnQp8CnNpJHq4renFreuyXl6R8tlYAs7Ou00IiEVe27Zp84E9FfHSvPEK+XBSgZu0WCAWiT35+9ee27RaERljrCvU2QV1z9V6076dj6x5CQC11szcZ+tAiJj1cwPjJbsOH7j3hd82tLeEHNczvuXgzOSzCWk35+V//LvfvLZjU1VZeS6fL3BuoOLT6wvfbhELRzbt35nO5+ZPmOYozcKIZHOi92s8ygIC8m/Ll/3H849G3JCjtM+mjwMUdD85Simi1bu2JLOZ+ROnASAzF33HRHHFHgFQRP+54jff/M3PPGNKItGc7xV+alL4CARBBSikXWZ+fefmfc0Nl46dHAtHhNmICYqLdo7WbZ05OFpPAAhJhP/xtw/8w+NL875XGon1CD0AgIM/fV1PXRBFyvNNMpe5qHbM3y247ZoLZhwtbATuvgC2Vt0ZtgO32qM+xm/u2fqNR+5/fvOakHbCbsj03GS2BwEKrgv57Gfy+Vg4MnvM5Ounzp4z9oJRldUWmm71bkvjqp2bH1/3yorN644k2yKO4yjNPbo03ZMAHd34zACZfM6wibrhqrLyERVVtQOHlMcS1NkKaIcz6Mil9zQc3NN0+GBrY0cmRUhh11WoRJh79ALpYiiFIWI8FPaNyXnezsMHdh7ar0gpIkAE6fcAYacFmzFGEB1SYSfkai0iQdEZ7Z5oETEiiigRibIIs/HYdBbEbDYNAACudrQbVkSEZJhN0bgc6aKqyhvjISAihrRryTlhDmaEDbMPpqgatHURbqkTESPGzr+63fRTbO392lreWtlN9VYWICsLkJUFyMrKAmRlAbKyAFlZgKysLEBWFiArC5CVBcjKygJkZQGysgBZWYCsrCxAVhYgKwuQlQXIygJkZWUBsrIAWfUq/R816lNQ2tBMMQAAAABJRU5ErkJggg==">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Pedido Diário">
+<meta name="application-name" content="Pedido Diário">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pedido Diário">
+<meta property="og:description" content="Pedido diário de limpeza, bebidas e estoque CD">
+<meta name="description" content="Pedido diário de limpeza, bebidas e estoque CD">
+<style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
+<style>
+/* Layout: app de uma coluna, cabeçalho verde cheio, cartões arredondados, barra de ações fixa embaixo. Modo "conferência" para quem recebe o link. */
+:root {
+  --bg: #f2f6f3;
+  --card: #ffffff;
+  --fg: #14231c;
+  --muted: #5b6b63;
+  --line: #dfe8e2;
+  --accent: #176b4d;
+  --accent-ink: #ffffff;
+  --mint: #e4f1ea;
+  --mint-ink: #176b4d;
+  --sel: #eef8f2;
+  --head: #176b4d;
+  --danger: #b3261e;
+  --danger-bg: #fbe9e7;
+  --shadow: 0 1px 2px rgba(20, 35, 28, .06);
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1713; --card: #17221c; --fg: #e6f0ea; --muted: #93a79b; --line: #26352c;
+    --accent: #228a60; --accent-ink: #ffffff; --mint: #1f3329; --mint-ink: #7fd4aa; --sel: #1a2b22;
+    --head: #14513a; --danger: #f2b8b5; --danger-bg: #3a1f1d; --shadow: none;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1713; --card: #17221c; --fg: #e6f0ea; --muted: #93a79b; --line: #26352c;
+  --accent: #228a60; --accent-ink: #ffffff; --mint: #1f3329; --mint-ink: #7fd4aa; --sel: #1a2b22;
+  --head: #14513a; --danger: #f2b8b5; --danger-bg: #3a1f1d; --shadow: none;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 16px; line-height: 1.35; padding-bottom: 96px; -webkit-text-size-adjust: 100%; }
+body.viewing { padding-bottom: 28px; }
+.viewing #edit, .viewing .bar { display: none; }
+.wrap { width: 100%; max-width: 640px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.band { background: var(--head); color: #fff; padding-block: 22px 20px; }
+header.band h1 { margin: 0 0 6px; font-size: 1.6rem; font-weight: 800; letter-spacing: -.01em; text-wrap: balance; }
+header.band p { margin: 0; font-size: 1rem; opacity: .92; }
+main { display: grid; gap: 16px; padding-block: 16px 8px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 18px; box-shadow: var(--shadow); min-width: 0; }
+label.lbl { display: block; font-size: .8rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+.field + .field { margin-top: 16px; }
+input[type="text"], input[type="date"], input[type="search"], input[type="tel"] {
+  width: 100%; min-height: 50px; padding: 0 16px; font: inherit; font-size: 1.05rem; color: var(--fg);
+  background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; outline: none; appearance: none; -webkit-appearance: none;
+}
+input::placeholder { color: var(--muted); opacity: .75; }
+input:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 55%, transparent); outline-offset: 2px; }
+input:focus { border-color: var(--accent); }
+.hint { margin: 8px 0 0; font-size: .85rem; color: var(--muted); }
+.units { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.chip { min-height: 38px; padding: 0 14px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--card); color: var(--fg); font: inherit; font-size: .92rem; cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--mint); border-color: var(--accent); color: var(--mint-ink); font-weight: 700; }
+.prod-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.prod-head h2 { margin: 0; font-size: 1.35rem; }
+.count { color: var(--muted); font-size: .95rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.list { margin-top: 6px; }
+.row { display: flex; align-items: center; gap: 8px; padding: 12px 0; border-top: 1px solid var(--line); }
+.row.sel { background: linear-gradient(90deg, var(--sel), transparent); }
+.row .name { flex: 1; min-width: 0; font-weight: 700; text-transform: uppercase; font-size: .95rem; letter-spacing: .01em; overflow-wrap: anywhere; }
+.row .name .q { font-weight: 800; font-size: 1.05rem; color: var(--mint-ink); text-transform: none; white-space: nowrap; margin-left: 2px; }
+.step { display: flex; align-items: center; gap: 4px; flex: none; }
+.btn-sq { width: 40px; height: 44px; border: 0; border-radius: 14px; background: var(--mint); color: var(--mint-ink); font: inherit; font-size: 1.5rem; font-weight: 800; line-height: 1; cursor: pointer; display: grid; place-items: center; touch-action: manipulation; }
+.btn-sq:active { transform: scale(.95); }
+.qty { width: 44px; min-height: 44px; padding: 0; text-align: center; font-weight: 800; font-size: 1.15rem; border: 0; background: transparent; color: var(--fg); border-radius: 10px; font-variant-numeric: tabular-nums; -moz-appearance: textfield; appearance: textfield; }
+.qty::-webkit-outer-spin-button, .qty::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.qty.zero { color: var(--muted); font-weight: 600; }
+.ico { width: 34px; height: 44px; border: 0; background: transparent; color: var(--muted); cursor: pointer; display: grid; place-items: center; flex: none; border-radius: 10px; }
+.ico:hover { color: var(--fg); }
+.ico.del:hover { color: var(--danger); }
+.ico svg { width: 20px; height: 20px; }
+.edit-box { display: grid; gap: 10px; padding: 12px 0; border-top: 1px solid var(--line); }
+.edit-box .two { display: grid; grid-template-columns: 1fr 96px; gap: 8px; }
+.edit-box .trio { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.edit-box .trio .fl { display: grid; gap: 4px; min-width: 0; font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.edit-box .trio .fl.wide { grid-column: 1 / -1; }
+.vrow .vq .tot { display: block; font-size: .72rem; font-weight: 700; margin-top: 1px; }
+.edit-box .acts, .confirm { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.confirm { flex: none; }
+.btn { min-height: 48px; padding: 0 18px; border-radius: 16px; border: 0; font: inherit; font-weight: 800; font-size: 1rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; text-align: center; touch-action: manipulation; }
+.btn.mint { background: var(--mint); color: var(--mint-ink); }
+.btn.pri { background: var(--accent); color: var(--accent-ink); }
+.btn.dng { background: var(--danger-bg); color: var(--danger); }
+.ver { margin: 14px 0 6px; text-align: center; font-size: .85rem; font-weight: 700; color: var(--muted); }
+#install { width: 100%; margin-top: 12px; }
+.newlist { width: 100%; margin: 14px 0 0; letter-spacing: .04em; }
+#newlist-confirm { margin: 10px 0 0; }
+.btn.sm { min-height: 40px; padding: 0 14px; font-size: .92rem; border-radius: 12px; }
+.btn[aria-disabled="true"] { opacity: .5; }
+.empty { padding: 22px 0 6px; color: var(--muted); text-align: center; border-top: 1px solid var(--line); }
+.preview-t { margin: 0 0 8px; font-size: 1.1rem; }
+.seg { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+pre.msg { margin: 0; padding: 14px 16px; border-radius: 16px; background: var(--bg); border: 1px dashed var(--line); font: inherit; font-size: .98rem; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 56px; }
+pre.msg.none { color: var(--muted); }
+.tog { display: flex; align-items: center; gap: 10px; margin-top: 14px; font-size: .95rem; cursor: pointer; min-height: 40px; }
+.tog input { width: 22px; height: 22px; accent-color: var(--accent); flex: none; }
+.stack { display: grid; gap: 10px; margin-top: 16px; }
+.two-btn { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.zbox { margin-top: 14px; padding: 14px; border-radius: 16px; background: var(--danger-bg); display: grid; gap: 12px; }
+.zbox strong { color: var(--danger); }
+.zlist { display: grid; gap: 8px; }
+.zopt { display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 8px 14px; border-radius: 14px; background: var(--card, #fff); border: 1.5px solid var(--line, #d7e2dc); font-weight: 700; cursor: pointer; }
+.zopt input { width: 24px; height: 24px; flex: none; accent-color: var(--danger); }
+.zopt span { flex: 1; }
+.zopt small { font-weight: 600; color: var(--muted); }
+.zopt.off { opacity: .55; }
+.zopt.zall { background: var(--danger-bg); border-color: var(--danger); }
+.tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 5px; border-radius: 18px; background: var(--mint); }
+.tab { min-height: 48px; padding: 0 4px; border: 0; border-radius: 14px; background: transparent; color: var(--mint-ink); font: inherit; font-weight: 800; font-size: .98rem; cursor: pointer; touch-action: manipulation; }
+.tab[aria-selected="true"] { background: var(--accent); color: var(--accent-ink); }
+.obanner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 16px; border-radius: 18px; background: var(--mint); color: var(--mint-ink); border: 1.5px solid var(--accent); font-weight: 700; }
+.obanner span { flex: 1 1 200px; min-width: 0; }
+.infobox { margin-top: 14px; padding: 14px; border-radius: 16px; background: var(--mint); color: var(--fg); display: grid; gap: 8px; font-size: .95rem; justify-items: start; }
+.infobox strong { color: var(--mint-ink); }
+.tip { margin: 14px 0 0; font-size: .85rem; color: var(--muted); }
+.bar { position: fixed; left: 0; right: 0; bottom: 0; background: var(--card); border-top: 1px solid var(--line); z-index: 20; padding-top: 12px; padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
+.bar .wrap { display: grid; grid-template-columns: 1fr 1fr 1.25fr; gap: 8px; }
+.bar .btn { min-height: 54px; font-size: .98rem; padding: 0 8px; }
+.pcount { display: inline-grid; place-items: center; min-width: 24px; height: 24px; padding: 0 6px; border-radius: 12px; background: var(--accent); color: var(--accent-ink); font-size: .85rem; }
+.sheet-bg { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 40; }
+.sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 41; max-height: 86vh; display: flex; flex-direction: column; background: var(--card); border-radius: 22px 22px 0 0; box-shadow: 0 -8px 30px rgba(0,0,0,.25); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.sheet-h { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 16px 10px; border-bottom: 1px solid var(--line); }
+.sheet-h h2 { margin: 0; font-size: 1.15rem; }
+.sheet-h small { display: block; color: var(--muted); font-weight: 600; font-size: .85rem; margin-top: 2px; }
+.sheet-b { overflow-y: auto; padding: 4px 16px 12px; -webkit-overflow-scrolling: touch; }
+.sheet-sec { margin: 14px 0 4px; font-size: .8rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--mint-ink); }
+.prow { display: flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.prow .pn { flex: 1; min-width: 0; font-weight: 700; overflow-wrap: anywhere; }
+.prow .pq { font-weight: 800; min-width: 64px; text-align: right; }
+.prow .btn-sq { width: 36px; height: 40px; font-size: 1.3rem; }
+.sheet-empty { padding: 28px 8px; text-align: center; color: var(--muted); font-weight: 600; }
+.sheet-f { display: grid; grid-template-columns: 1fr 1.25fr; gap: 10px; padding: 12px 16px 14px; border-top: 1px solid var(--line); }
+.toast { position: fixed; left: 50%; bottom: calc(92px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 12px); background: var(--fg); color: var(--bg); padding: 12px 18px; border-radius: 14px; font-weight: 700; font-size: .95rem; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 30; max-width: calc(100% - 32px); text-align: center; }
+.viewing .toast { bottom: calc(24px + env(safe-area-inset-bottom, 0px)); }
+.toast.on { opacity: 1; transform: translate(-50%, 0); }
+
+/* Modo conferência (link recebido) */
+.vmeta { display: grid; gap: 4px; margin-bottom: 14px; font-size: 1rem; }
+.vmeta b { font-weight: 800; }
+.vmeta span.k { color: var(--muted); font-size: .8rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; margin-right: 8px; }
+.prog { display: grid; gap: 8px; margin-bottom: 4px; }
+.prog .track { height: 12px; border-radius: 999px; background: var(--mint); overflow: hidden; }
+.prog .fill { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 999px; transition: width .25s; }
+.prog .txt { font-weight: 800; font-variant-numeric: tabular-nums; }
+.vlist { margin-top: 10px; }
+.vitem { border-top: 1px solid var(--line); }
+.vsec { margin-top: 14px; padding: 8px 12px; border-radius: 12px; background: var(--mint); color: var(--mint-ink); font-size: .8rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.vsec:first-child { margin-top: 0; }
+.vrow { width: 100%; display: flex; align-items: center; gap: 10px; }
+.vmain { flex: 1; min-width: 0; display: flex; align-items: center; gap: 12px; padding: 14px 0; border: 0; background: transparent; color: var(--fg); font: inherit; text-align: left; cursor: pointer; touch-action: manipulation; }
+.vedit { display: grid; gap: 10px; justify-items: start; margin: 0 0 14px; padding: 14px; border-radius: 16px; background: var(--mint); }
+.vedit .vlab { font-size: .8rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--mint-ink); }
+.vedit .vstep { display: flex; align-items: center; gap: 8px; }
+.vedit .btn-sq { background: var(--card); width: 48px; height: 48px; }
+.vqin { width: 72px; min-height: 48px; padding: 0; text-align: center; font: inherit; font-size: 1.4rem; font-weight: 800; color: var(--fg); background: var(--card); border: 1.5px solid var(--line); border-radius: 14px; font-variant-numeric: tabular-nums; -moz-appearance: textfield; appearance: textfield; }
+.vqin::-webkit-outer-spin-button, .vqin::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.vedit .vwas { font-size: .9rem; color: var(--muted); }
+.vedit .vacts { display: flex; gap: 8px; flex-wrap: wrap; }
+.vrow .n { width: 22px; flex: none; color: var(--muted); font-size: .85rem; font-variant-numeric: tabular-nums; text-align: right; }
+.vrow .box { width: 34px; height: 34px; flex: none; border-radius: 9px; border: 2px solid var(--accent); display: grid; place-items: center; background: var(--card); font-size: 1.3rem; line-height: 1; }
+.vrow .box .ck { visibility: hidden; }
+.vrow .vn { flex: 1; min-width: 0; font-weight: 700; font-size: 1.05rem; text-transform: uppercase; overflow-wrap: anywhere; }
+.vrow .vq { flex: none; padding: 6px 12px; border: 2px solid transparent; border-radius: 12px; background: var(--mint); color: var(--mint-ink); font: inherit; font-weight: 800; font-size: 1.2rem; white-space: nowrap; font-variant-numeric: tabular-nums; cursor: pointer; text-align: center; touch-action: manipulation; }
+.vrow .vq small { font-size: .78rem; font-weight: 700; margin-left: 2px; }
+.vrow .vq .was { display: block; font-style: normal; font-size: .68rem; font-weight: 700; opacity: .8; margin-top: 1px; }
+.vrow .vq.chg { border-color: var(--accent); background: var(--card); }
+.vrow .vq.open { border-color: var(--accent); }
+.vrow .box { cursor: pointer; padding: 0; color: inherit; font-family: inherit; touch-action: manipulation; }
+.vrow[data-on="true"] .box { border-color: transparent; background: transparent; }
+.vrow[data-on="true"] .box .ck { visibility: visible; }
+.vrow[data-on="true"] .n, .vrow[data-on="true"] .vn, .vrow[data-on="true"] .vq { opacity: .38; }
+.vdone { margin: 6px 0 0; padding: 12px 14px; border-radius: 14px; background: var(--mint); color: var(--mint-ink); font-weight: 800; text-align: center; }
+@media (prefers-reduced-motion: reduce) { .toast, .btn-sq, .prog .fill { transition: none; } .btn-sq:active { transform: none; } }
+@media (max-width: 380px) { .btn-sq { width: 36px; } .qty { width: 38px; } .ico { width: 30px; } .row { gap: 4px; } .vrow { gap: 8px; } }
+</style>
+</head>
+<body>
+<header class="band">
+  <div class="wrap">
+    <h1 id="h1t">Pedido Diário de Limpeza</h1>
+    <p id="h1p">Selecione os produtos e ajuste as quantidades com + e −.</p>
+  </div>
+</header>
+
+<main class="wrap" id="edit">
+  <button class="btn dng newlist" id="newlist" type="button">NOVA LISTA</button>
+  <div class="zbox" id="newlist-confirm" hidden>
+    <strong>Começar uma nova lista?</strong>
+    <span>Zera as quantidades de todos os estoques (Limpeza, Bebidas e Estoque CD) e apaga o nome do responsável.</span>
+    <div class="two-btn">
+      <button class="btn dng" id="newlist-yes" type="button">Sim, nova lista</button>
+      <button class="btn mint" id="newlist-no" type="button">Cancelar</button>
+    </div>
+  </div>
+  <div class="tabs" role="tablist" aria-label="Tipo de pedido">
+    <button type="button" role="tab" class="tab" id="tab-limp" aria-selected="true">Limpeza</button>
+    <button type="button" role="tab" class="tab" id="tab-beb" aria-selected="false">Bebidas</button>
+    <button type="button" role="tab" class="tab" id="tab-cd" aria-selected="false">Estoque CD</button>
+  </div>
+  <div class="obanner" id="obanner" hidden>
+    <span>Para compartilhar no WhatsApp, abra este app no navegador.</span>
+    <button class="btn pri sm" id="ob1" type="button">Abrir no navegador</button>
+  </div>
+  <section class="card" aria-label="Dados do pedido">
+    <div class="field">
+      <label class="lbl" for="date">Data do pedido</label>
+      <input type="date" id="date">
+    </div>
+    <div class="field">
+      <label class="lbl" for="unit">Unidade</label>
+      <input type="text" id="unit" placeholder="Ex.: Porto Mirim" autocomplete="off">
+      <div class="units" id="units"></div>
+    </div>
+    <div class="field">
+      <label class="lbl" for="resp">Responsável pelo pedido</label>
+      <input type="text" id="resp" placeholder="Seu nome" autocomplete="off">
+    </div>
+  </section>
+
+  <section class="card" aria-label="Produtos">
+    <div class="prod-head">
+      <h2>Produtos</h2>
+      <span class="count" id="count" aria-live="polite">0 itens selecionados</span>
+    </div>
+    <label class="lbl" for="q" style="position:absolute;left:-9999px">Buscar produto</label>
+    <input type="search" id="q" placeholder="Buscar produto..." autocomplete="off">
+    <div id="addslot"></div>
+    <div class="list" id="list"></div>
+  </section>
+
+  <section class="card" aria-label="Mensagem e envio">
+    <h2 class="preview-t">Mensagem do WhatsApp</h2>
+    <div class="seg" role="group" aria-label="Formato da mensagem">
+      <button type="button" class="chip" id="mode-file" aria-pressed="true">Arquivo</button>
+      <button type="button" class="chip" id="mode-link" aria-pressed="false">Link</button>
+      <button type="button" class="chip" id="mode-text" aria-pressed="false">Lista em texto</button>
+    </div>
+    <pre class="msg" id="msg"></pre>
+    <p class="hint" id="file-wrap">O WhatsApp recebe só o arquivo <b id="fname">LIMPEZA DIARIA</b>. Quem abrir vê a lista e marca os itens com ✅. Se o celular não abrir o compartilhamento, o arquivo é baixado: no WhatsApp, toque no clipe 📎, escolha Documento e selecione o arquivo.</p>
+    <div id="link-wrap">
+      <div class="field" style="margin-top:14px">
+        <label class="lbl" for="base">Endereço do app (usado no link)</label>
+        <input type="text" id="base" inputmode="url" placeholder="https://seu-app.tiiny.site" autocomplete="off" autocapitalize="off" spellcheck="false">
+        <p class="hint" id="basehint">Cole aqui o endereço onde o app está publicado. Quem abrir o link vê a lista e marca os itens.</p>
+      </div>
+    </div>
+    <label class="tog" for="hdr" id="hdr-wrap" hidden><input type="checkbox" id="hdr"> Incluir data e unidade no topo da mensagem</label>
+    <div class="field" id="phone-wrap" style="margin-top:14px">
+      <label class="lbl" for="phone">Enviar para o número (opcional)</label>
+      <input type="tel" id="phone" inputmode="tel" placeholder="Ex.: 84 99999-9999" autocomplete="off">
+      <p class="hint">Deixe em branco para escolher o contato ou grupo no WhatsApp.</p>
+    </div>
+    <div class="stack">
+      <a class="btn pri" id="share" href="#" target="_blank" rel="noopener">Compartilhar pedido pelo WhatsApp</a>
+      <button class="btn mint" id="copy" type="button">Copiar mensagem</button>
+      <button class="btn mint" id="ob2" type="button">Abrir no navegador</button>
+      <div class="two-btn">
+        <button class="btn mint" id="add2" type="button">+ Adicionar produto</button>
+        <button class="btn mint" id="zero" type="button">Zerar quantidades</button>
+      </div>
+    </div>
+    <div class="zbox" id="zero-confirm" hidden>
+      <strong>Qual estoque você quer zerar?</strong>
+      <div class="zlist" id="zero-list"></div>
+      <div class="two-btn">
+        <button class="btn dng" id="zero-yes" type="button">Sim, zerar</button>
+        <button class="btn mint" id="zero-no" type="button">Cancelar</button>
+      </div>
+    </div>
+    <div class="infobox" id="obinfo" hidden>
+      <strong>Como abrir no navegador</strong>
+      <span>1. Toque nos três pontinhos ⋮ (ou no ícone de compartilhar) deste visualizador.</span>
+      <span>2. Escolha <b>Abrir no Chrome</b> ou <b>Abrir com…</b> e depois <b>Chrome</b>.</span>
+      <span>Se não aparecer, volte ao WhatsApp, toque no arquivo e escolha <b>Chrome</b> → <b>Sempre</b>.</span>
+      <button class="btn mint sm" id="obclose" type="button">Fechar</button>
+    </div>
+    <p class="tip">Dica: use + e − para ajustar, ou toque no número para digitar. O lápis edita o nome e a unidade, a lixeira exclui. As alterações ficam salvas neste aparelho. A cada novo dia as quantidades voltam a zero.</p>
+    <button class="btn mint" id="install" type="button" hidden>Instalar aplicativo</button>
+    <p class="ver" id="ver-edit"></p>
+  </section>
+</main>
+
+<main class="wrap" id="view" hidden>
+  <section class="card" aria-label="Pedido recebido">
+    <div class="vmeta" id="vmeta"></div>
+    <div class="prog">
+      <div class="track"><span class="fill" id="vfill"></span></div>
+      <div class="txt" id="vprog" aria-live="polite"></div>
+    </div>
+    <label class="tog" for="vonly"><input type="checkbox" id="vonly"> Mostrar só os que faltam</label>
+    <div class="vlist" id="vlist"></div>
+    <div class="vdone" id="vdone" hidden>Todos os itens foram marcados.</div>
+    <div class="stack">
+      <button class="btn mint" id="vcopy" type="button">Copiar lista em texto</button>
+      <button class="btn mint" id="vclear" type="button">Desmarcar tudo</button>
+      <a class="btn pri" id="vnew" href="#">Fazer um novo pedido</a>
+    </div>
+    <p class="tip">Toque no nome ou no quadradinho para marcar. Toque na quantidade para ajustar quando você não tiver tudo que foi pedido. As marcações e ajustes ficam salvos neste aparelho.</p>
+    <p class="ver" id="ver-view"></p>
+  </section>
+</main>
+
+<div class="bar">
+  <div class="wrap">
+    <button class="btn mint" id="add" type="button">+ Produto</button>
+    <button class="btn mint" id="prev" type="button" aria-haspopup="dialog">Prévia <span class="pcount" id="pcount">0</span></button>
+    <a class="btn pri" id="wa" href="#" target="_blank" rel="noopener">WhatsApp ↗</a>
+  </div>
+</div>
+<div class="sheet-bg" id="sheet-bg" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Prévia da lista" hidden>
+  <div class="sheet-h">
+    <div><h2>Prévia da lista</h2><small id="sheet-sub"></small></div>
+    <button class="btn mint sm" id="sheet-x" type="button">Fechar</button>
+  </div>
+  <div class="sheet-b" id="sheet-b"></div>
+  <div class="sheet-f">
+    <button class="btn mint" id="sheet-ok" type="button">Continuar editando</button>
+    <button class="btn pri" id="sheet-wa" type="button">WhatsApp ↗</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function () {
+  var KEY = 'pedido-limpeza-v1';
+  var UNITS = ['Porto Mirim', 'Genipabu', 'Cunhaú'];
+  var PENCIL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
+  var TRASH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/></svg>';
+
+  function todayISO() {
+    var d = new Date();
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+  function fmtDate(iso) {
+    var p = (iso || '').split('-');
+    return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : '';
+  }
+  function norm(s) { return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+  // Lista de produtos da folha de pedido; as quantidades iniciais vêm do pedido anotado à mão.
+  var SEED = [
+    ['Álcool gel 13k', 'und', 0], ['Álcool líquido', 'und', 4], ['Antisséptico bucal', 'und', 0], ['Bom ar 269 ml', 'und', 1],
+    ['Água sanitária', 'und', 6], ['Brilhotex 5L', 'und', 1], ['Sabão em pó', 'und', 1], ['Esponja multiuso (10und)', 'und', 0],
+    ['Fibraço (10und)', 'und', 0], ['Espuma de banheiro 1,25L', 'und', 0], ['Metaquat', 'und', 1], ['Detergente neutro 5L', 'und', 3],
+    ['Óleo de peroba', 'und', 0], ['Pedra sanitária', 'und', 3], ['Peroxy protein removedor', 'und', 0], ['Quartec 100 herbal', 'und', 0],
+    ['Sabonete espuma 5L', 'und', 0], ['Sabonete espuma antisséptico', 'und', 0], ['Tec San 105', 'und', 0], ['Tempclearn MLD floral', 'und', 0],
+    ['Tempclor foam 5L', 'und', 0], ['Tela para mictório', 'und', 0], ['Saco de 40L', 'und', 0], ['Saco de 100L', 'und', 0],
+    ['Saco de 200L', 'und', 0], ['Saco de 400L', 'und', 0], ['Copo de 50ml', 'und', 0], ['Papel higiênico rolão', 'cx', 1],
+    ['Papel toalha em bobina', 'cx', 1], ['Papel interfolhado', 'fd', 0], ['Luva multiuso (12und)', 'und', 4], ['Luva de vinil preta', 'cx', 1],
+    ['Luva branca', 'und', 0], ['Vassoura de corredor', 'und', 2]
+  ];
+
+  // Quantidade com unidades: "1 FD 12 und" quando o produto tem quantas unidades vêm no fardo; senão "4und".
+  function fmtQty(q, un, pack) {
+    un = un || 'und'; pack = Number(pack) || 0;
+    return pack > 0 ? q + ' ' + un + ' ' + (q * pack) + ' und' : q + un;
+  }
+  // Lista de bebidas: [nome, unidade, quantidade inicial, unidades por fardo (0 = não informado)].
+  var BEVV = 4;
+  // Ajuste da versão 3 para a 4: mantém o que você já editou e só corrige o tamanho destes fardos.
+  var BEVPATCH = { 'Coca-Cola Zero lata': 8, 'Fanta laranja lata 350ml': 8, 'Fanta uva lata 350ml': 8, 'Sprite lata 350ml': 8, 'Sprite Zero 350ml': 6 };
+  var BEV = [
+    ['Água 20 litros', 'und', 0, 0], ['Água copo', 'FD', 0, 48],
+    ['Água mineral c/ gás Sterbom 500ml', 'FD', 0, 12], ['Água mineral s/ gás Sterbom 510ml', 'FD', 0, 12],
+    ['Amstel lata 350ml', 'FD', 0, 12], ['Barril de chopp 50 litros', 'und', 0, 0],
+    ['Brahma Duplo Malte lata', 'FD', 0, 12], ['Brahma Malzbier', 'FD', 0, 24], ['Brahma Zero lata 350ml', 'FD', 0, 12],
+    ['Cachaça a granel Jequitibá Sanvale 20L', 'und', 0, 0], ['Cerveja Budweiser long', 'FD', 0, 24],
+    ['Coca-Cola lata 350ml', 'FD', 0, 12], ['Coca-Cola Zero lata', 'FD', 0, 8], ['Coco verde', 'und', 0, 0],
+    ['Corona Extra 330ml', 'FD', 0, 24], ['Corona Zero', 'FD', 0, 24], ['Devassa lata 350ml', 'FD', 0, 12],
+    ['Eisenbahn long', 'FD', 0, 24], ['Fanta laranja lata 350ml', 'FD', 0, 8], ['Fanta uva lata 350ml', 'FD', 0, 8],
+    ['Guaraná Antarctica', 'FD', 0, 12], ['Guaraná Antarctica Zero', 'FD', 0, 12],
+    ['H2O limão', 'FD', 0, 12], ['H2O limoneto', 'FD', 0, 12],
+    ['Heineken long', 'FD', 0, 24], ['Heineken lata 350ml', 'FD', 0, 12], ['Heineken Zero lata 350ml', 'FD', 0, 12], ['Heineken Zero long', 'FD', 0, 24],
+    ['Monster Energy 473ml', 'FD', 0, 6], ['Red Bull 250ml', 'FD', 0, 24],
+    ['Sanvale prata a granel 50L', 'und', 0, 0], ['Schweppes Zero açúcar 350ml', 'FD', 0, 12],
+    ['Sprite lata 350ml', 'FD', 0, 8], ['Sprite Zero 350ml', 'FD', 0, 6], ['Stella Pure Gold', 'FD', 0, 24],
+    ['Tônica Antarctica', 'FD', 0, 12], ['Tônica Antarctica Zero', 'FD', 0, 12]
+  ];
+  // Estoque CD: [nome, unidade, quantidade inicial, unidades por fardo]. Ajuste pelo lápis.
+  var CDV = 2;
+  var CDS = [
+    ['ADOÇANTE 75ML', 'und', 0, 0], ['ALCAPARRA EM CONSERVA', 'und', 0, 0], ['ALHO FRITO GRANULADO', 'und', 0, 0],
+    ['AMACIANTE DE CARNE', 'und', 0, 0], ['AMEIXA EM CALDA', 'und', 0, 0], ['AMÊNDOA INTEIRA', 'und', 0, 0],
+    ['AMÊNDOA LAMINADA 1KG', 'und', 0, 0], ['AMENDOIM GRANULADO', 'und', 0, 0], ['AMIDO DE MILHO 720G', 'und', 0, 0],
+    ['ARROZ ARBÓRIO', 'und', 0, 0], ['ARROZ BRANCO', 'und', 0, 0], ['ARROZ INTEGRAL', 'und', 0, 0],
+    ['ARROZ PARBOILIZADO', 'und', 0, 0], ['ASPARGOS BRANCO EM CONSERVA 500G', 'und', 0, 0], ['AZEITE 250ML', 'und', 0, 0],
+    ['AZEITE 500ML', 'und', 0, 0], ['AZEITONA PRETA S/CAROÇO', 'und', 0, 0], ['AZEITONA VERDE FATIADA', 'und', 0, 0],
+    ['AZEITONA VERDE S/CAROÇO', 'und', 0, 0], ['AÇAFRÃO', 'und', 0, 0], ['AÇÚCAR CRISTAL GRANULADO', 'und', 0, 0],
+    ['AÇÚCAR MASCAVO', 'und', 0, 0], ['AÇÚCAR REFINADO', 'und', 0, 0], ['AÇÚCAR SACHÊ 400X5', 'und', 0, 0],
+    ['BATATA APERITIVO', 'und', 0, 0], ['BATATA PALHA 1KG', 'und', 0, 0], ['BICARBONATO DE SÓDIO', 'und', 0, 0],
+    ['CAFÉ 250G', 'und', 0, 0], ['CALDO DE BACON', 'und', 0, 0], ['CALDO DE CARNE', 'und', 0, 0],
+    ['CALDO DE FRUTOS DO MAR 500G', 'und', 0, 0], ['CALDO DE GALINHA', 'und', 0, 0], ['CALDO DE LEGUMES', 'und', 0, 0],
+    ['CANELA EM PAU', 'und', 0, 0], ['CANELA EM PÓ 1KG', 'und', 0, 0], ['CASTANHA DE CAJU 500G', 'und', 0, 0],
+    ['CEBOLINHA CRISTAL', 'und', 0, 0], ['CEREJA 500G', 'und', 0, 0], ['CEREJA EM CALDA 100G', 'und', 0, 0],
+    ['CEREJA EM CALDA 2KG', 'und', 0, 0], ['CEREJA EM CALDAS 1,010 KG', 'und', 0, 0], ['CHANTYMIX', 'und', 0, 0],
+    ['CHOCO BALL', 'und', 0, 0], ['CHOCOLATE EM PÓ 50% CACAU 1KG', 'und', 0, 0], ['CHOCOLATE GRANULADO 1,1KG', 'und', 0, 0],
+    ['CHOCOLATE MEIO AMARGO BARRA 1KG', 'und', 0, 0], ['CHOCOLATE MEIO AMARGO BARRA 500G', 'und', 0, 0], ['CHÁ CAMOMILA', 'und', 0, 0],
+    ['CHÁ CARQUEJA', 'und', 0, 0], ['CHÁ CIDREIRA', 'und', 0, 0], ['CHÁ DE BOLDO', 'und', 0, 0],
+    ['CHÁ DE BOLDO DO CHILE', 'und', 0, 0], ['CHÁ DE ERVA DOCE', 'und', 0, 0], ['CHÁ HORTELÃ', 'und', 0, 0],
+    ['CHÁ MAÇÃ E CANELA', 'und', 0, 0], ['CHÁ MAÇÃ, CRAVO E CANELA', 'und', 0, 0], ['CHÁ PRETO', 'und', 0, 0],
+    ['CHÁ VERDE', 'und', 0, 0], ['COB 300G MORANGO', 'und', 0, 0], ['COBERTURA DE CHOCOLATE', 'und', 0, 0],
+    ['COBERTURA DE MORANGO', 'und', 0, 0], ['COCO FLOCADO 1KG', 'und', 0, 0], ['COGUMELO FATIADO', 'und', 0, 0],
+    ['COGUMELO INTEIRO', 'und', 0, 0], ['COLORÍFICO 1KG', 'und', 0, 0], ['COLORÍFICO 500G', 'und', 0, 0],
+    ['COUVERT OPCIONAL', 'und', 0, 0], ['CRAVO INTEIRO', 'und', 0, 0], ['CREME DE CEBOLA', 'und', 0, 0],
+    ['CREME DE LEITE 200G', 'und', 0, 0], ['DAMASCO SECO 1KG', 'und', 0, 0], ['DAMASCO SECO 500G', 'und', 0, 0],
+    ['DESMOLDANTE', 'und', 0, 0], ['DOCE DE LEITE', 'und', 0, 0], ['EMULTINA DE BAUNILHA 100ML', 'und', 0, 0],
+    ['ESPAGUETE VITARELA/FORTALEZA', 'und', 0, 0], ['ESSÊNCIA DE BAUNILHA 30ML', 'und', 0, 0], ['ESSÊNCIA DE BAUNILHA 960ML', 'und', 0, 0],
+    ['EXPRESSO CAFÉ C/LEITE', 'und', 0, 0], ['EXPRESSO CAPPUCCINO', 'und', 0, 0], ['EXPRESSO SUPREMO', 'und', 0, 0],
+    ['EXTRATO DE TOMATE 1,7KG', 'und', 0, 0], ['FARINHA A GRANEL PACOTES DE 10KG', 'und', 0, 0], ['FARINHA DE TRIGO C/ FERMENTO', 'und', 0, 0],
+    ['FARINHA DE TRIGO S/ FERMENTO', 'und', 0, 0], ['FARINHA DE TRIGO S/ FERMENTO 5KG', 'und', 0, 0], ['FARINHA PANKO', 'und', 0, 0],
+    ['FEIJÃO BRANCO', 'und', 0, 0], ['FEIJÃO CARIOCA', 'und', 0, 0], ['FEIJÃO FRADINHO/CORDA', 'und', 0, 0],
+    ['FEIJÃO PRETO', 'und', 0, 0], ['FERMENTO BIOLÓGICO', 'und', 0, 0], ['FERMENTO SACHÊ 10G', 'und', 0, 0],
+    ['FLOCÃO 500G', 'und', 0, 0], ['FOLHA DE LOURO', 'und', 0, 0],
+    ['FRUTA CRISTALIZADA', 'und', 0, 0], ['FUMAÇA LÍQUIDA', 'und', 0, 0], ['FUNGHI SECO 1K', 'und', 0, 0],
+    ['FUNGHI SECO 250G', 'und', 0, 0], ['FUNGHI SECO 500G', 'und', 0, 0], ['GELATINA SACHÊ', 'und', 0, 0],
+    ['GELEIA DE MORANGO', 'und', 0, 0], ['GELEIA DE PIMENTA BIQUINHO', 'und', 0, 0], ['GENGIBRE', 'und', 0, 0],
+    ['GERGELIM DESPELICULADO', 'und', 0, 0], ['GERGELIM PRETO', 'und', 0, 0], ['GLUTAMATO', 'und', 0, 0],
+    ['GOIABADA 1KL', 'und', 0, 0], ['GOIABADA 400G', 'und', 0, 0], ['GRÃO DE BICO', 'und', 0, 0],
+    ['KETCHUP 3L', 'und', 0, 0], ['KETCHUP 5,5ML', 'und', 0, 0], ['LEITE CONDENSADO 395G', 'und', 0, 0],
+    ['LEITE DE COCO 500ML', 'und', 0, 0], ['LEITE EM PÓ 750G/700G', 'und', 0, 0], ['LEITE LÍQUIDO INTEGRAL', 'und', 0, 0],
+    ['LEMON PEPPER 1KG', 'und', 0, 0], ['LEMON PEPPER 500G', 'und', 0, 0], ['LENTILHA', 'und', 0, 0],
+    ['MAIONESE 3KL', 'und', 0, 0], ['MANTEIGA DA TERRA', 'und', 0, 0], ['MARGARINA 15KG', 'und', 0, 0],
+    ['MARGARINA 3KL', 'und', 0, 0], ['MASSA BAVETTE', 'und', 0, 0], ['MASSA DE LASANHA', 'und', 0, 0],
+    ['MASSA FARFALLE', 'und', 0, 0], ['MASSA FETTUCCINE', 'und', 0, 0], ['MASSA FUSILLI', 'und', 0, 0],
+    ['MASSA LINGUINE', 'und', 0, 0], ['MASSA PENNE', 'und', 0, 0], ['MASSA RIGATONE', 'und', 0, 0],
+    ['MASSA SPAGHETTI', 'und', 0, 0], ['MASSA VERMICELLI', 'und', 0, 0], ['MELADO DE CANA', 'und', 0, 0],
+    ['MILHO VERDE 2,7KG', 'und', 0, 0], ['MILHO VERDE LATA', 'und', 0, 0], ['MILHO VERDE SACHÊ', 'und', 0, 0],
+    ['MOLHO BARBECUE 3,5KG', 'und', 0, 0], ['MOLHO DE ALHO', 'und', 0, 0], ['MOLHO DE OSTRA 500ML', 'und', 0, 0],
+    ['MOLHO DE PIMENTA', 'und', 0, 0], ['MOLHO DE PIMENTA ARTEZANAL', 'und', 0, 0], ['MOLHO INGLÊS 150ML', 'und', 0, 0],
+    ['MOLHO SHOYO 150ML', 'und', 0, 0], ['MOLHO SHOYU 5L', 'und', 0, 0], ['MOSTARDA 1KG', 'und', 0, 0],
+    ['MOSTARDA 3KG', 'und', 0, 0], ['MOSTARDA DIJON BEAUFOR 1001KG', 'und', 0, 0], ['NESCAU 2K', 'und', 0, 0],
+    ['NOZES', 'und', 0, 0], ['ÓLEO DE ALGODÃO 900ML', 'und', 0, 0], ['ÓLEO DE GERGELIM 900ML', 'und', 0, 0],
+    ['ÓLEO DE GERGELIM TORRADO', 'und', 0, 0], ['ÓLEO DE SOJA 900ML', 'und', 0, 0], ['ORÉGANO', 'und', 0, 0],
+    ['OVOS DE CODORNA', 'und', 0, 0], ['OVOS DE GALINHA', 'und', 0, 0], ['PALMITO INT', 'und', 0, 0],
+    ['PIMENTA BIQUINHO', 'und', 0, 0], ['PIMENTA DO REINO EM GRÃO 1K', 'und', 0, 0], ['PISTACHE EM GRÃO 1KG', 'und', 0, 0],
+    ['QUEIJO RALADO', 'und', 0, 0], ['SAL FINO', 'und', 0, 0], ['SAL GROSSO', 'und', 0, 0],
+    ['SAL SACHÊ 400 UND', 'und', 0, 0], ['SARDINHA ENLATADA', 'und', 0, 0], ['TEMPERO ALECRIM 1KG', 'und', 0, 0],
+    ['TEMPERO CHIMICHURRI', 'und', 0, 0], ['TOMATE SECO', 'und', 0, 0], ['TRIGO PARA KIBE', 'und', 0, 0],
+    ['UVA PASSAS', 'und', 0, 0], ['VINAGRE 5L', 'und', 0, 0], ['VINAGRE BALSÂMICO 500ML', 'und', 0, 0],
+    ['VINAGRE DE ÁLCOOL 250ML', 'und', 0, 0], ['VINAGRE DE MAÇÃ 250ML', 'und', 0, 0], ['YAKISOBA', 'und', 0, 0]
+  ];
+  var TABS = {
+    limp: { name: 'LIMPEZA DIARIA', short: 'Limpeza', h1: 'Pedido Diário de Limpeza', view: 'Limpeza diária', head: 'Pedido de limpeza', seed: SEED },
+    beb:  { name: 'BEBIDAS', short: 'Bebidas', h1: 'Pedido Diário de Bebidas', view: 'Bebidas', head: 'Pedido de bebidas', seed: BEV },
+    cd:   { name: 'ESTOQUE CD', short: 'Estoque CD', h1: 'Pedido Diário de Estoque CD', view: 'Estoque CD', head: 'Pedido de estoque CD', seed: CDS }
+  };
+
+  var uid = 0;
+  function newId() { uid += 1; return 'p' + Date.now().toString(36) + uid; }
+
+  var S = null;
+  function seedState() {
+    return {
+      day: todayISO(), date: todayISO(), unit: '', resp: '', phone: '', hdr: false, mode: 'file', v2: true, base: '', tab: 'limp',
+      items: SEED.map(mkItem),
+      bev: BEV.map(mkItem), bevV: BEVV,
+      cd: CDS.map(mkItem), cdV: CDV
+    };
+  }
+  function mkItem(r) { return { id: newId(), name: r[0], un: r[1], qty: r[2], pack: r[3] || 0 }; }
+  function load() {
+    var raw = null;
+    try { raw = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { raw = null; }
+    if (raw && Array.isArray(raw.items) && raw.items.length) {
+      var t = todayISO();
+      if (Array.isArray(raw.bev) && raw.bevV === 3) {
+        raw.bev.forEach(function (it) { if (BEVPATCH[it.name] !== undefined) it.pack = BEVPATCH[it.name]; });
+        raw.bevV = BEVV;
+      }
+      if (!Array.isArray(raw.bev) || !raw.bev.length || raw.bevV !== BEVV) {
+        raw.bev = BEV.map(mkItem); raw.bevV = BEVV;
+      }
+      if (!Array.isArray(raw.cd) || !raw.cd.length || raw.cdV !== CDV) { raw.cd = CDS.map(mkItem); raw.cdV = CDV; }
+      raw.tab = (raw.tab === 'beb' || raw.tab === 'cd') ? raw.tab : 'limp';
+      if (raw.day !== t) {
+        raw.items.forEach(function (it) { it.qty = 0; });
+        raw.bev.forEach(function (it) { it.qty = 0; });
+        raw.cd.forEach(function (it) { it.qty = 0; });
+        raw.day = t; raw.date = t;
+      }
+      if (!raw.v2) { raw.mode = 'file'; raw.v2 = true; }
+      raw.mode = (raw.mode === 'text' || raw.mode === 'link') ? raw.mode : 'file';
+      raw.base = raw.base || '';
+      return raw;
+    }
+    return seedState();
+  }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* sem armazenamento */ } }
+
+  var $ = function (id) { return document.getElementById(id); };
+  var listEl = $('list'), addSlot = $('addslot');
+  var editId = null, delId = null, adding = false, query = '', toastTimer = null;
+  var curMsg = '', seq = 0;
+
+  function cfg() { return TABS[S.tab === 'beb' ? 'beb' : S.tab === 'cd' ? 'cd' : 'limp']; }
+  function items() { return S.tab === 'beb' ? S.bev : S.tab === 'cd' ? S.cd : S.items; }
+  function setItems(arr) { if (S.tab === 'beb') S.bev = arr; else if (S.tab === 'cd') S.cd = arr; else S.items = arr; }
+  function selected() { return items().filter(function (i) { return i.qty > 0; }); }
+  function selOf(arr) { return arr.filter(function (i) { return i.qty > 0; }); }
+  function totalSel() { return selOf(S.items).length + selOf(S.bev).length + selOf(S.cd).length; }
+  // Nome do que é enviado: só bebidas, só limpeza ou os dois juntos.
+  function listName(hasL, hasB, hasC) {
+    var n = (hasL ? 1 : 0) + (hasB ? 1 : 0) + (hasC ? 1 : 0);
+    if (n > 1) return 'LISTA DIARIA';
+    return hasC ? 'ESTOQUE CD' : hasB ? 'PEDIDO DIARIO BAR' : hasL ? 'PEDIDO DIARIO LIMPEZA' : null;
+  }
+  function curName() {
+    return listName(selOf(S.items).length > 0, selOf(S.bev).length > 0, selOf(S.cd).length > 0) ||
+      (S.tab === 'beb' ? 'PEDIDO DIARIO BAR' : S.tab === 'cd' ? 'ESTOQUE CD' : 'PEDIDO DIARIO LIMPEZA');
+  }
+
+  /* ---------- Link do pedido: o pedido vai dentro do endereço (sem servidor) ---------- */
+  function b64uEnc(bytes) {
+    var s = '';
+    for (var i = 0; i < bytes.length; i += 0x8000) s += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+  function b64uDec(str) {
+    str = str.replace(/-/g, '+').replace(/_/g, '/');
+    while (str.length % 4) str += '=';
+    var bin = atob(str), out = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+  function pipe(bytes, stream) {
+    return new Response(new Blob([bytes]).stream().pipeThrough(stream)).arrayBuffer().then(function (b) { return new Uint8Array(b); });
+  }
+  function encodePayload(obj) {
+    var bytes = new TextEncoder().encode(JSON.stringify(obj));
+    var plain = function () { return 'j' + b64uEnc(bytes); };
+    try {
+      if (typeof CompressionStream === 'function') {
+        return pipe(bytes, new CompressionStream('deflate-raw')).then(function (z) { return 'z' + b64uEnc(z); }, plain);
+      }
+    } catch (e) { /* usa o formato simples */ }
+    return Promise.resolve(plain());
+  }
+  function decodePayload(tok) {
+    try {
+      var kind = tok.charAt(0), bytes = b64uDec(tok.slice(1));
+      if (kind === 'z') {
+        if (typeof DecompressionStream !== 'function') return Promise.reject(new Error('sem suporte'));
+        return pipe(bytes, new DecompressionStream('deflate-raw')).then(function (u) { return JSON.parse(new TextDecoder().decode(u)); });
+      }
+      return Promise.resolve(JSON.parse(new TextDecoder().decode(bytes)));
+    } catch (e) { return Promise.reject(e); }
+  }
+  function hid(s) { var h = 5381; for (var i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return (h >>> 0).toString(36); }
+
+  function normBase(s) {
+    s = (s || '').trim();
+    if (!s) return '';
+    if (!/^https?:\/\//i.test(s)) s = 'https://' + s;
+    return s.split('#')[0].split('?')[0];
+  }
+  function detectBase() {
+    try {
+      if (window.top === window && /^https?:$/.test(location.protocol)) return location.origin + location.pathname;
+    } catch (e) { /* ignora */ }
+    return '';
+  }
+  function currentBase() { return normBase(S.base) || detectBase(); }
+
+  // Produtos da lista padrão vão só como número (link bem mais curto); os que você criou vão com o nome.
+  function rowsOf(arr, seed) {
+    var seedIdx = {};
+    seed.forEach(function (r, k) { seedIdx[r[0] + '|' + r[1]] = k; });
+    return selOf(arr).map(function (it) {
+      var k = seedIdx[it.name + '|' + (it.un || 'und')], pack = Number(it.pack) || 0;
+      if (k !== undefined) return pack === (seed[k][3] || 0) ? [k, it.qty] : [k, it.qty, pack];
+      return pack ? [it.name, it.qty, it.un || 'und', pack] : [it.name, it.qty, it.un || 'und'];
+    });
+  }
+  // O pedido leva as três abas: l = limpeza, b = bebidas, c = estoque CD (só as que tiverem itens).
+  function payload() {
+    var u = S.unit.trim(), ui = UNITS.indexOf(u);
+    var o = { d: S.date, u: ui >= 0 ? ui : u, r: S.resp.trim() };
+    var l = rowsOf(S.items, SEED), b = rowsOf(S.bev, BEV), c = rowsOf(S.cd, CDS);
+    if (l.length) o.l = l;
+    if (b.length) o.b = b;
+    if (c.length) o.c = c;
+    return o;
+  }
+  function expRows(rows, seed, sec) {
+    return (rows || []).map(function (row) {
+      if (typeof row[0] === 'number') {
+        var s = seed[row[0]] || ['Item ' + row[0], 'und', 0, 0];
+        return [s[0], row[1], s[1], row[2] !== undefined ? row[2] : (s[3] || 0), sec];
+      }
+      return [row[0], row[1], row[2] || 'und', row[3] || 0, sec];
+    });
+  }
+  function expandPayload(d) {
+    var l = d.l, b = d.b;
+    if (!l && !b && Array.isArray(d.i)) { if (d.t === 'b') b = d.i; else l = d.i; }   // pedidos no formato antigo
+    var L = expRows(l, SEED, 'l'), B = expRows(b, BEV, 'b'), C = expRows(d.c, CDS, 'c');
+    d.i = L.concat(B, C);
+    d.hasL = L.length > 0; d.hasB = B.length > 0; d.hasC = C.length > 0;
+    d.name = listName(d.hasL, d.hasB, d.hasC) || 'PEDIDO DIARIO LIMPEZA';
+    if (typeof d.u === 'number') d.u = UNITS[d.u] || '';
+    return d;
+  }
+  function linkHead() { return curName() + (S.resp.trim() ? ' - ' + S.resp.trim() : ''); }
+
+  function textList() {
+    var L = selOf(S.items), B = selOf(S.bev), C = selOf(S.cd);
+    if (!L.length && !B.length && !C.length) return '';
+    function fmt(arr) { return arr.map(function (it, i) { return (i + 1) + ' ' + it.name + ' *(' + fmtQty(it.qty, it.un, it.pack) + ')*'; }); }
+    var secs = [['LIMPEZA', L], ['BEBIDAS', B], ['ESTOQUE CD', C]].filter(function (x) { return x[1].length; });
+    var both = secs.length > 1, out = [];
+    if (both) secs.forEach(function (x, k) { if (k) out.push(''); out.push('*' + x[0] + '*'); out = out.concat(fmt(x[1])); });
+    else out = fmt(secs[0][1]);
+    var body = out.join('\n');
+    if (S.hdr) {
+      var head = (both ? 'Lista diária' : C.length ? 'Pedido de estoque CD' : B.length ? 'Pedido de bebidas' : 'Pedido de limpeza') + ' ' + fmtDate(S.date) + (S.unit.trim() ? ' - ' + S.unit.trim() : '');
+      if (S.resp.trim()) head += '\nResponsável: ' + S.resp.trim();
+      return head + '\n\n' + body;
+    }
+    return body;
+  }
+
+  function phoneDigits() {
+    var digits = (S.phone || '').replace(/\D/g, '');
+    if (digits.length === 10 || digits.length === 11) digits = '55' + digits;
+    return digits;
+  }
+  function waHref(msg) {
+    return 'https://wa.me/' + phoneDigits() + '?text=' + encodeURIComponent(msg);
+  }
+
+  function paint(html, msg, none) {
+    curMsg = msg;
+    var pre = $('msg');
+    pre.innerHTML = html;
+    pre.className = 'msg' + (none ? ' none' : '');
+    ['share', 'wa'].forEach(function (id) {
+      var a = $(id);
+      a.setAttribute('href', msg ? waHref(msg) : '#');
+      a.setAttribute('aria-disabled', msg ? 'false' : 'true');
+    });
+  }
+
+  function renderPreview() {
+    var secs = [['limp', 'Limpeza', S.items], ['beb', 'Bebidas', S.bev], ['cd', 'Estoque CD', S.cd]], html = '', tot = 0;
+    secs.forEach(function (sc) {
+      var sel = selOf(sc[2]); if (!sel.length) return;
+      tot += sel.length;
+      html += '<div class="sheet-sec">' + sc[1] + ' · ' + sel.length + '</div>';
+      sel.forEach(function (it) {
+        html += '<div class="prow" data-s="' + sc[0] + '" data-id="' + esc(it.id) + '"><span class="pn">' + esc(it.name) + '</span>' +
+          '<button class="btn-sq" data-pa="minus" type="button" aria-label="Diminuir ' + esc(it.name) + '">−</button>' +
+          '<span class="pq">' + esc(fmtQty(it.qty, it.un, it.pack)) + '</span>' +
+          '<button class="btn-sq" data-pa="plus" type="button" aria-label="Aumentar ' + esc(it.name) + '">+</button></div>';
+      });
+    });
+    $('sheet-b').innerHTML = html || '<div class="sheet-empty">Nenhum item selecionado ainda.</div>';
+    $('sheet-sub').textContent = tot + (tot === 1 ? ' item' : ' itens') + ' no pedido';
+  }
+  function openPreview() { renderPreview(); $('sheet-bg').hidden = false; $('sheet').hidden = false; }
+  function closePreview() { $('sheet-bg').hidden = true; $('sheet').hidden = true; }
+  $('prev').addEventListener('click', openPreview);
+  $('sheet-x').addEventListener('click', closePreview);
+  $('sheet-ok').addEventListener('click', closePreview);
+  $('sheet-bg').addEventListener('click', closePreview);
+  $('sheet-wa').addEventListener('click', function () { closePreview(); $('wa').click(); });
+  $('sheet-b').addEventListener('click', function (ev) {
+    var b = ev.target.closest('[data-pa]'); if (!b) return;
+    var row = b.closest('.prow'), map = { limp: S.items, beb: S.bev, cd: S.cd };
+    var it = map[row.getAttribute('data-s')].filter(function (i) { return String(i.id) === row.getAttribute('data-id'); })[0];
+    if (!it) return;
+    it.qty = clamp(it.qty + (b.getAttribute('data-pa') === 'plus' ? 1 : -1));
+    save(); renderList(); renderSummary();
+  });
+  document.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && !$('sheet').hidden) closePreview(); });
+
+  function renderSummary() {
+    var n = selected().length;
+    $('pcount').textContent = String(totalSel());
+    if (!$('sheet').hidden) renderPreview();
+    $('count').textContent = n + (n === 1 ? ' item selecionado' : ' itens selecionados');
+    var mode = (S.mode === 'text' || S.mode === 'link') ? S.mode : 'file';
+    ['file', 'link', 'text'].forEach(function (m) { $('mode-' + m).setAttribute('aria-pressed', String(mode === m)); });
+    $('link-wrap').hidden = mode !== 'link';
+    $('hdr-wrap').hidden = mode !== 'text';
+    $('file-wrap').hidden = mode !== 'file';
+    $('phone-wrap').hidden = mode === 'file';
+    $('copy').hidden = mode === 'file';
+    $('share').textContent = mode === 'file' ? 'Compartilhar ' + curName() + ' no WhatsApp' : 'Compartilhar pedido pelo WhatsApp';
+    var nl = selOf(S.items).length, nb = selOf(S.bev).length, nc = selOf(S.cd).length, tot = nl + nb + nc;
+    $('fname').textContent = curName();
+    seq += 1;
+    if (mode === 'file') {
+      var parts = [];
+      if (nl) parts.push('Limpeza: ' + nl + (nl === 1 ? ' item' : ' itens'));
+      if (nb) parts.push('Bebidas: ' + nb + (nb === 1 ? ' item' : ' itens'));
+      if (nc) parts.push('Estoque CD: ' + nc + (nc === 1 ? ' item' : ' itens'));
+      paint(tot ? '📎 <strong>' + curName() + '.html</strong>\n' + esc(parts.join(' · ')) + (S.resp.trim() ? '\n' + esc(S.resp.trim()) : '') : 'Nenhum item selecionado ainda.', '', !tot);
+      ['share', 'wa'].forEach(function (id) { var a = $(id); a.setAttribute('href', '#'); a.setAttribute('aria-disabled', tot ? 'false' : 'true'); });
+      return;
+    }
+    if (mode === 'text') {
+      var t = textList();
+      paint(t ? esc(t).replace(/\*\(([^)]*)\)\*/g, '<strong>($1)</strong>') : 'Nenhum item selecionado ainda.', t, !t);
+      return;
+    }
+    var base = currentBase();
+    $('base').placeholder = detectBase() || 'https://seu-app.tiiny.site';
+    $('basehint').textContent = (!S.base.trim() && detectBase())
+      ? 'Usando o endereço desta página. Quem abrir o link vê a lista e marca os itens.'
+      : 'Cole aqui o endereço onde o app está publicado. Quem abrir o link vê a lista e marca os itens.';
+    if (!tot) { paint('Nenhum item selecionado ainda.', '', true); return; }
+    if (!base) { paint('Para gerar o link do pedido, informe o endereço do app no campo abaixo. Ou use "Lista em texto".', '', true); return; }
+    var my = seq;
+    paint('Gerando link…', '', true);
+    encodePayload(payload()).then(function (tok) {
+      if (my !== seq) return;
+      var link = base + '#p=' + tok;
+      var head = linkHead();
+      var shortLink = link.length > 64 ? link.slice(0, 50) + '…' : link;
+      paint(esc(head) + '\n' + esc(shortLink), head + '\n' + link, false);
+    });
+  }
+
+  function rowHTML(it) {
+    if (editId === it.id) {
+      return '<div class="edit-box" data-id="' + it.id + '"><div class="trio">' +
+        '<label class="fl wide">Nome<input type="text" id="e-name" value="' + esc(it.name) + '" autocomplete="off"></label>' +
+        '<label class="fl">Unidade (ex.: FD)<input type="text" id="e-un" value="' + esc(it.un) + '" placeholder="und" autocomplete="off"></label>' +
+        '<label class="fl">Und por fardo<input type="text" id="e-pack" inputmode="numeric" value="' + (Number(it.pack) > 0 ? Number(it.pack) : '') + '" placeholder="ex.: 12" autocomplete="off"></label></div>' +
+        '<div class="acts"><button class="btn pri sm" data-act="save" type="button">Salvar</button><button class="btn mint sm" data-act="cancel" type="button">Cancelar</button></div></div>';
+    }
+    var controls;
+    if (delId === it.id) {
+      controls = '<div class="confirm"><button class="btn dng sm" data-act="delyes" type="button">Excluir</button><button class="btn mint sm" data-act="delno" type="button">Não</button></div>';
+    } else {
+      controls = '<div class="step"><button class="btn-sq" data-act="minus" type="button" aria-label="Diminuir ' + esc(it.name) + '">−</button>' +
+        '<input class="qty' + (it.qty ? '' : ' zero') + '" data-act="qty" type="number" inputmode="numeric" min="0" max="999" value="' + it.qty + '" aria-label="Quantidade de ' + esc(it.name) + '">' +
+        '<button class="btn-sq" data-act="plus" type="button" aria-label="Aumentar ' + esc(it.name) + '">+</button></div>' +
+        '<button class="ico" data-act="edit" type="button" aria-label="Editar ' + esc(it.name) + '">' + PENCIL + '</button>' +
+        '<button class="ico del" data-act="del" type="button" aria-label="Excluir ' + esc(it.name) + '">' + TRASH + '</button>';
+    }
+    return '<div class="row' + (it.qty ? ' sel' : '') + '" data-id="' + it.id + '"><div class="name">' + esc(it.name) +
+      ' <b class="q">' + qLabel(it) + '</b></div>' + controls + '</div>';
+  }
+
+  function renderList() {
+    var q = norm(query.trim());
+    var vis = items().filter(function (it) { return !q || norm(it.name).indexOf(q) !== -1; });
+    if (!vis.length) {
+      listEl.innerHTML = '<div class="empty">' + (q ? 'Nenhum produto encontrado para "' + esc(query.trim()) + '".' : 'Nenhum produto. Toque em + Produto para adicionar.') + '</div>';
+    } else {
+      listEl.innerHTML = vis.map(rowHTML).join('');
+    }
+    if (editId) { var e = $('e-name'); if (e) { e.focus(); e.setSelectionRange(e.value.length, e.value.length); } }
+  }
+
+  function renderAdd() {
+    if (!adding) { addSlot.innerHTML = ''; return; }
+    addSlot.innerHTML = '<div class="edit-box" style="margin-top:12px"><div class="trio">' +
+      '<label class="fl wide">Nome do produto<input type="text" id="n-name" placeholder="Nome do produto" autocomplete="off"></label>' +
+      '<label class="fl">Unidade (ex.: FD)<input type="text" id="n-un" value="' + (S.tab === 'beb' ? 'FD' : 'und') + '" autocomplete="off"></label>' +
+      '<label class="fl">Und por fardo<input type="text" id="n-pack" inputmode="numeric" placeholder="ex.: 12" autocomplete="off"></label></div>' +
+      '<div class="acts"><button class="btn pri sm" id="n-save" type="button">Adicionar</button><button class="btn mint sm" id="n-cancel" type="button">Cancelar</button></div></div>';
+    $('n-name').focus();
+    $('n-save').onclick = commitAdd;
+    $('n-cancel').onclick = function () { adding = false; renderAdd(); };
+    $('n-name').onkeydown = function (e) { if (e.key === 'Enter') commitAdd(); };
+  }
+  function commitAdd() {
+    var name = $('n-name').value.trim();
+    if (!name) { toast('Digite o nome do produto'); $('n-name').focus(); return; }
+    var un = ($('n-un').value.trim() || 'und');
+    items().push({ id: newId(), name: name, un: un, qty: 1, pack: clamp($('n-pack').value) });
+    adding = false; query = ''; $('q').value = '';
+    save(); renderAdd(); renderList(); renderSummary();
+    toast('Produto adicionado com 1 ' + un);
+    var last = listEl.lastElementChild; if (last && last.scrollIntoView) last.scrollIntoView({ block: 'center' });
+  }
+
+  function renderUnits() {
+    $('units').innerHTML = UNITS.map(function (u) {
+      return '<button type="button" class="chip" data-unit="' + esc(u) + '" aria-pressed="' + (S.unit.trim() === u) + '">' + esc(u) + '</button>';
+    }).join('');
+  }
+
+  var APP_VERSION = '1.5';
+  var APP_DATE = '05/11/2026';
+  ['ver-edit', 'ver-view'].forEach(function (id) { $(id).textContent = 'Pedido Diário · versão ' + APP_VERSION + ' · ' + APP_DATE; });
+
+  // Botão "Instalar aplicativo" (aparece quando o navegador permite instalar).
+  var deferredInstall = null;
+  var isStandalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true;
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault(); deferredInstall = e;
+    if (!isStandalone) $('install').hidden = false;
+  });
+  window.addEventListener('appinstalled', function () { $('install').hidden = true; deferredInstall = null; });
+  $('install').addEventListener('click', function () {
+    if (!deferredInstall) return;
+    deferredInstall.prompt();
+    deferredInstall.userChoice.then(function () { deferredInstall = null; $('install').hidden = true; });
+  });
+
+  function toast(t) {
+    var el = $('toast'); el.textContent = t; el.classList.add('on');
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { el.classList.remove('on'); }, 2400);
+  }
+  function find(id) { var a = items(); for (var i = 0; i < a.length; i++) if (a[i].id === id) return a[i]; return null; }
+  function clamp(n) { n = parseInt(n, 10); if (isNaN(n) || n < 0) n = 0; return Math.min(n, 999); }
+
+  function qLabel(it) { return it.qty > 0 ? '(' + fmtQty(it.qty, it.un, it.pack) + ')' : ''; }
+  function updateRowQty(row, it) {
+    row.classList.toggle('sel', it.qty > 0);
+    var ql = row.querySelector('.q'); if (ql) ql.textContent = qLabel(it);
+    var inp = row.querySelector('.qty'); if (inp) { inp.value = it.qty; inp.classList.toggle('zero', !it.qty); }
+  }
+
+  listEl.addEventListener('click', function (ev) {
+    var btn = ev.target.closest('[data-act]'); if (!btn || btn.tagName === 'INPUT') return;
+    var holder = btn.closest('[data-id]'); if (!holder) return;
+    var it = find(holder.getAttribute('data-id')); if (!it) return;
+    var act = btn.getAttribute('data-act');
+    if (act === 'plus' || act === 'minus') {
+      it.qty = clamp(it.qty + (act === 'plus' ? 1 : -1));
+      updateRowQty(holder, it); save(); renderSummary();
+    } else if (act === 'edit') { editId = it.id; delId = null; renderList(); }
+    else if (act === 'cancel') { editId = null; renderList(); }
+    else if (act === 'save') {
+      var nm = $('e-name').value.trim();
+      if (!nm) { toast('O nome não pode ficar vazio'); return; }
+      it.name = nm; it.un = $('e-un').value.trim() || 'und'; it.pack = clamp($('e-pack').value);
+      editId = null; save(); renderList(); renderSummary();
+    } else if (act === 'del') { delId = it.id; editId = null; renderList(); }
+    else if (act === 'delno') { delId = null; renderList(); }
+    else if (act === 'delyes') {
+      setItems(items().filter(function (x) { return x.id !== it.id; }));
+      delId = null; save(); renderList(); renderSummary(); toast('Produto excluído');
+    }
+  });
+  listEl.addEventListener('input', function (ev) {
+    var inp = ev.target; if (!inp.classList || !inp.classList.contains('qty')) return;
+    var row = inp.closest('[data-id]'); var it = find(row.getAttribute('data-id')); if (!it) return;
+    it.qty = clamp(inp.value);
+    row.classList.toggle('sel', it.qty > 0); inp.classList.toggle('zero', !it.qty);
+    var ql = row.querySelector('.q'); if (ql) ql.textContent = qLabel(it);
+    save(); renderSummary();
+  });
+  listEl.addEventListener('focusin', function (ev) { if (ev.target.classList && ev.target.classList.contains('qty')) ev.target.select(); });
+  listEl.addEventListener('focusout', function (ev) {
+    var inp = ev.target; if (!inp.classList || !inp.classList.contains('qty')) return;
+    var it = find(inp.closest('[data-id]').getAttribute('data-id')); if (it) inp.value = it.qty;
+  });
+  listEl.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Enter' && ev.target.id === 'e-name') { ev.preventDefault(); listEl.querySelector('[data-act="save"]').click(); }
+    if (ev.key === 'Escape' && editId) { editId = null; renderList(); }
+  });
+
+  function openAdd() { adding = true; renderAdd(); var a = $('addslot'); if (a.scrollIntoView) a.scrollIntoView({ block: 'center', behavior: 'smooth' }); }
+  $('add').onclick = openAdd; $('add2').onclick = openAdd;
+
+  $('q').addEventListener('input', function (e) { query = e.target.value; renderList(); });
+  $('date').addEventListener('input', function (e) { S.date = e.target.value; save(); renderSummary(); });
+  $('unit').addEventListener('input', function (e) { S.unit = e.target.value; save(); renderUnits(); renderSummary(); });
+  $('resp').addEventListener('input', function (e) { S.resp = e.target.value; save(); renderSummary(); });
+  $('phone').addEventListener('input', function (e) { S.phone = e.target.value; save(); renderSummary(); });
+  $('base').addEventListener('input', function (e) { S.base = e.target.value; save(); renderSummary(); });
+  $('hdr').addEventListener('change', function (e) { S.hdr = e.target.checked; save(); renderSummary(); });
+  $('mode-file').addEventListener('click', function () { S.mode = 'file'; save(); renderSummary(); });
+  $('mode-link').addEventListener('click', function () { S.mode = 'link'; save(); renderSummary(); });
+  $('mode-text').addEventListener('click', function () { S.mode = 'text'; save(); renderSummary(); });
+  $('units').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-unit]'); if (!b) return;
+    S.unit = (S.unit.trim() === b.getAttribute('data-unit')) ? '' : b.getAttribute('data-unit');
+    $('unit').value = S.unit; save(); renderUnits(); renderSummary();
+  });
+
+  function guard(e) {
+    var msg = curMsg;
+    if (!msg) {
+      e.preventDefault();
+      if (!totalSel()) toast('Selecione ao menos um item');
+      else if (S.mode !== 'text' && !currentBase()) toast('Informe o endereço do app para gerar o link');
+      else toast('Aguarde um instante e toque de novo');
+      return;
+    }
+    // Aberto como página no navegador: vai na mesma aba, que funciona mesmo quando a nova aba é bloqueada.
+    var standalone = false;
+    try { standalone = window.top === window; } catch (x) { standalone = false; }
+    if (standalone) {
+      e.preventDefault();
+      var url = waHref(msg);
+      if (/Android/i.test(navigator.userAgent)) {
+        // Android: pede ao sistema para abrir o app do WhatsApp; se não houver app, cai no link do navegador.
+        var d = phoneDigits();
+        url = 'intent://send?' + (d ? 'phone=' + d + '&' : '') + 'text=' + encodeURIComponent(msg) +
+          '#Intent;scheme=whatsapp;S.browser_fallback_url=' + encodeURIComponent(waHref(msg)) + ';end';
+      }
+      window.location.href = url;
+      setTimeout(function () {
+        if (!document.hidden) toast('Não abriu? Toque em "Copiar mensagem" e cole no WhatsApp.');
+      }, 2500);
+    }
+  }
+  /* ---------- Modo arquivo: o WhatsApp recebe só o arquivo "LIMPEZA DIARIA" ---------- */
+  function buildOrderHTML() {
+    var html = '<!doctype html>\n' + document.documentElement.outerHTML;
+    var json = JSON.stringify(payload()).replace(/</g, '\\u003c');
+    var tag = '<scr' + 'ipt>';
+    var i = html.lastIndexOf(tag);
+    return html.slice(0, i) + tag + 'window.__ORDER__=' + json + ';<' + '/scr' + 'ipt>\n' + html.slice(i);
+  }
+  function isStandalone() { try { return window.top === window; } catch (e) { return false; } }
+  function downloadOrder(html) {
+    if (inWebView()) {
+      $('obanner').hidden = false;
+      toast('Aqui dentro não dá para compartilhar. Toque em "Abrir no navegador".');
+      var b = $('obanner'); if (b.scrollIntoView) b.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      return;
+    }
+    if (!isStandalone()) { toast('Dentro do Claude não dá para gerar o arquivo. Use o app aberto no Chrome.'); return; }
+    try {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+      a.download = curName() + '.html';
+      document.body.appendChild(a); a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+      toast('Arquivo baixado. No WhatsApp: clipe 📎 → Documento → ' + curName());
+    } catch (e) { toast('Não foi possível gerar o arquivo neste navegador.'); }
+  }
+  function shareFile() {
+    if (!totalSel()) { toast('Selecione ao menos um item'); return; }
+    var html = buildOrderHTML(), file = null;
+    try { file = new File([html], curName() + '.html', { type: 'text/html' }); } catch (e) { file = null; }
+    if (file && navigator.canShare && navigator.share && navigator.canShare({ files: [file] })) {
+      navigator.share({ files: [file], title: curName() }).catch(function (err) {
+        if (err && err.name === 'AbortError') return;
+        downloadOrder(html);
+      });
+      return;
+    }
+    downloadOrder(html);
+  }
+  /* ---------- Abrir no navegador (quando o app abre dentro do WhatsApp ou de outro visualizador) ---------- */
+  function inWebView() { return /; wv\)|WhatsApp|FBAN|FBAV|Instagram/i.test(navigator.userAgent); }
+  function openInBrowser() {
+    var android = /Android/i.test(navigator.userAgent);
+    var web = /^https?:$/.test(location.protocol) && isStandalone();
+    if (android && web) {
+      // Pede ao Android para abrir esta mesma página no Chrome; se não der, abre aqui mesmo.
+      window.location.href = 'intent://' + location.host + location.pathname + location.search + location.hash +
+        '#Intent;scheme=' + location.protocol.replace(':', '') + ';package=com.android.chrome;S.browser_fallback_url=' +
+        encodeURIComponent(location.href) + ';end';
+      return;
+    }
+    // Arquivo guardado no celular: a página não consegue se abrir sozinha no Chrome, então mostra o caminho.
+    var box = $('obinfo'); box.hidden = false;
+    if (box.scrollIntoView) box.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }
+  $('ob1').addEventListener('click', openInBrowser);
+  $('ob2').addEventListener('click', openInBrowser);
+  $('obclose').addEventListener('click', function () { $('obinfo').hidden = true; });
+  $('obanner').hidden = !inWebView();
+
+  function onShare(e) {
+    if (S.mode === 'file') { e.preventDefault(); shareFile(); return; }
+    guard(e);
+  }
+  $('share').addEventListener('click', onShare);
+  $('wa').addEventListener('click', onShare);
+
+  function copyText(msg, okMsg, selectEl) {
+    function fallback() {
+      var ok = false;
+      if (selectEl) {
+        var r = document.createRange(); r.selectNodeContents(selectEl);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      } else {
+        var ta = document.createElement('textarea'); ta.value = msg; ta.setAttribute('readonly', '');
+        ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+        document.body.appendChild(ta); ta.select();
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+      }
+      toast(ok ? okMsg : 'Não consegui copiar. Selecione o texto manualmente.');
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(msg).then(function () { toast(okMsg); }, fallback);
+    } else { fallback(); }
+  }
+  $('copy').addEventListener('click', function () {
+    if (!curMsg) { toast(totalSel() ? 'Aguarde o link ficar pronto' : 'Selecione ao menos um item'); return; }
+    copyText(curMsg, 'Mensagem copiada', null);
+  });
+
+  $('newlist').addEventListener('click', function () {
+    var box = $('newlist-confirm'); box.hidden = false; $('zero-confirm').hidden = true;
+    if (box.scrollIntoView) box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  });
+  $('newlist-no').addEventListener('click', function () { $('newlist-confirm').hidden = true; });
+  $('newlist-yes').addEventListener('click', function () {
+    [S.items, S.bev, S.cd].forEach(function (a) { a.forEach(function (i) { i.qty = 0; }); });
+    S.resp = ''; $('resp').value = '';
+    $('newlist-confirm').hidden = true;
+    save(); renderList(); renderSummary(); toast('Nova lista pronta');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  $('zero').addEventListener('click', function () {
+    var box = $('zero-confirm');
+    var defs = [['limp', 'Limpeza', S.items], ['beb', 'Bebidas', S.bev], ['cd', 'Estoque CD', S.cd]];
+    var tot = defs.reduce(function (a, d) { return a + selOf(d[2]).length; }, 0);
+    $('zero-list').innerHTML = '<label class="zopt zall"><input type="checkbox" id="z-all"' + (tot ? ' checked' : '') + '><span>Todos os estoques</span><small>' + (tot ? tot + (tot === 1 ? ' item' : ' itens') : 'sem itens') + '</small></label>' + defs.map(function (d) {
+      var n = selOf(d[2]).length;
+      return '<label class="zopt' + (n ? '' : ' off') + '"><input type="checkbox" data-z="' + d[0] + '"' + (n ? ' checked' : '') + '>' +
+        '<span>' + d[1] + '</span><small>' + (n ? n + (n === 1 ? ' item' : ' itens') : 'sem itens') + '</small></label>';
+    }).join('');
+    var zl = $('zero-list');
+    zl.onchange = function (ev) {
+      var all = $('z-all'), cs = zl.querySelectorAll('input[data-z]');
+      if (ev.target === all) Array.prototype.forEach.call(cs, function (c) { c.checked = all.checked; });
+      else all.checked = Array.prototype.every.call(cs, function (c) { return c.checked; });
+    };
+    var cs0 = zl.querySelectorAll('input[data-z]');
+    if (tot) $('z-all').checked = Array.prototype.every.call(cs0, function (c) { return c.checked; });
+    box.hidden = false;
+    if (box.scrollIntoView) box.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  });
+  $('zero-no').addEventListener('click', function () { $('zero-confirm').hidden = true; });
+  $('zero-yes').addEventListener('click', function () {
+    var map = { limp: S.items, beb: S.bev, cd: S.cd }, nomes = [];
+    Array.prototype.forEach.call($('zero-list').querySelectorAll('input[data-z]'), function (c) {
+      if (!c.checked) return;
+      map[c.getAttribute('data-z')].forEach(function (i) { i.qty = 0; });
+      nomes.push(c.nextSibling.textContent);
+    });
+    if (!nomes.length) { toast('Marque ao menos um estoque'); return; }
+    $('zero-confirm').hidden = true;
+    save(); renderList(); renderSummary(); toast('Zerado: ' + nomes.join(', '));
+  });
+
+  /* ---------- Modo conferência: tela de quem recebe o link ---------- */
+  var V = { tok: '', data: null, checked: {}, qty: {}, edit: -1, only: false };
+  function chkKey() { return 'pedido-limpeza-chk-' + hid(V.tok); }
+  function loadChecks() {
+    V.checked = {}; V.qty = {}; V.edit = -1;
+    try {
+      var saved = JSON.parse(localStorage.getItem(chkKey()) || '[]');
+      if (Array.isArray(saved)) { saved.forEach(function (i) { V.checked[i] = true; }); }
+      else if (saved && typeof saved === 'object') {
+        (saved.c || []).forEach(function (i) { V.checked[i] = true; });
+        V.qty = saved.q || {};
+      }
+    } catch (e) { V.checked = {}; V.qty = {}; }
+  }
+  function saveChecks() {
+    try { localStorage.setItem(chkKey(), JSON.stringify({ c: Object.keys(V.checked).map(Number), q: V.qty })); } catch (e) { /* sem armazenamento */ }
+  }
+  // Quantidade que a pessoa realmente tem (começa igual à pedida).
+  function vQty(i) { return V.qty[i] !== undefined ? V.qty[i] : Number(V.data.i[i][1]); }
+  function pillHTML(i) {
+    var row = V.data.i[i], q = vQty(i), chg = q !== Number(row[1]);
+    var pack = Number(row[3]) || 0;
+    return esc(q) + '<small>' + esc(row[2] || 'und') + '</small>' + (pack > 0 ? '<span class="tot">' + esc(q * pack) + ' und</span>' : '') +
+      (chg ? '<em class="was">pedido ' + esc(row[1]) + '</em>' : '');
+  }
+  function setQ(i, n) {
+    n = clamp(n);
+    if (n === Number(V.data.i[i][1])) delete V.qty[i]; else V.qty[i] = n;
+    saveChecks();
+  }
+  function vTotals() {
+    var total = V.data.i.length, done = 0;
+    for (var k = 0; k < total; k++) if (V.checked[k]) done++;
+    return { total: total, done: done };
+  }
+  function renderProgress() {
+    var t = vTotals();
+    $('vprog').textContent = t.done + ' de ' + t.total + (t.total === 1 ? ' item marcado' : ' itens marcados');
+    $('vfill').style.width = (t.total ? Math.round(t.done * 100 / t.total) : 0) + '%';
+    $('vdone').hidden = !(t.total && t.done === t.total);
+  }
+  function renderView() {
+    var d = V.data;
+    var meta = [];
+    if (d.d) meta.push('<div><span class="k">Data</span><b>' + esc(fmtDate(d.d)) + '</b></div>');
+    if (d.u) meta.push('<div><span class="k">Unidade</span><b>' + esc(d.u) + '</b></div>');
+    if (d.r) meta.push('<div><span class="k">Responsável</span><b>' + esc(d.r) + '</b></div>');
+    $('vmeta').innerHTML = meta.join('');
+    $('vmeta').hidden = !meta.length;
+    var html = '', lastSec = '', both = ((d.hasL ? 1 : 0) + (d.hasB ? 1 : 0) + (d.hasC ? 1 : 0)) > 1;
+    d.i.forEach(function (row, idx) {
+      var on = !!V.checked[idx];
+      if (V.only && on) return;
+      if (both && row[4] !== lastSec) { lastSec = row[4]; html += '<div class="vsec">' + secLabel(row[4]) + '</div>'; }
+      var chg = vQty(idx) !== Number(row[1]);
+      html += '<div class="vitem" data-i="' + idx + '"><div class="vrow" data-on="' + on + '">' +
+        '<button type="button" class="vmain" data-act="tog"><span class="n">' + (idx + 1) + '</span><span class="vn">' + esc(row[0]) + '</span></button>' +
+        '<button type="button" class="vq' + (chg ? ' chg' : '') + (V.edit === idx ? ' open' : '') + '" data-act="edit" aria-label="Ajustar quantidade de ' + esc(row[0]) + '">' + pillHTML(idx) + '</button>' +
+        '<button type="button" class="box" role="checkbox" aria-checked="' + on + '" aria-label="Marcar ' + esc(row[0]) + '" data-act="tog"><span class="ck">✅</span></button></div>';
+      if (V.edit === idx) {
+        html += '<div class="vedit"><span class="vlab">Quantidade que você tem</span>' +
+          '<div class="vstep"><button type="button" class="btn-sq" data-act="minus" aria-label="Diminuir">−</button>' +
+          '<input class="vqin" type="number" inputmode="numeric" min="0" max="999" value="' + vQty(idx) + '" aria-label="Quantidade que você tem">' +
+          '<button type="button" class="btn-sq" data-act="plus" aria-label="Aumentar">+</button></div>' +
+          '<span class="vwas">Pedido: ' + esc(Number(row[3]) > 0 ? fmtQty(Number(row[1]), row[2], row[3]) : row[1] + ' ' + (row[2] || 'und')) + '</span>' +
+          '<div class="vacts"><button type="button" class="btn mint sm" data-act="reset">Voltar ao pedido</button><button type="button" class="btn pri sm" data-act="done">OK</button></div></div>';
+      }
+      html += '</div>';
+    });
+    $('vlist').innerHTML = html || '<div class="empty">Tudo marcado.</div>';
+    renderProgress();
+  }
+  function renderViewError() {
+    $('vmeta').hidden = true;
+    $('vlist').innerHTML = '<div class="empty">Não foi possível abrir este pedido. O link pode estar incompleto ou o navegador é muito antigo.</div>';
+    $('vprog').textContent = ''; $('vfill').style.width = '0';
+  }
+  $('vlist').addEventListener('click', function (ev) {
+    if (!V.data) return;
+    var el = ev.target.closest('[data-act]'); if (!el) return;
+    var item = el.closest('[data-i]'); if (!item) return;
+    var i = Number(item.getAttribute('data-i')), act = el.getAttribute('data-act');
+    if (act === 'tog') {
+      if (V.checked[i]) delete V.checked[i]; else V.checked[i] = true;
+      saveChecks();
+    } else if (act === 'edit') { V.edit = (V.edit === i) ? -1 : i; }
+    else if (act === 'plus') { setQ(i, vQty(i) + 1); }
+    else if (act === 'minus') { setQ(i, vQty(i) - 1); }
+    else if (act === 'reset') { delete V.qty[i]; saveChecks(); }
+    else if (act === 'done') { V.edit = -1; }
+    renderView();
+  });
+  $('vlist').addEventListener('input', function (ev) {
+    var inp = ev.target; if (!V.data || !inp.classList || !inp.classList.contains('vqin')) return;
+    var item = inp.closest('[data-i]'), i = Number(item.getAttribute('data-i'));
+    setQ(i, inp.value);
+    var pill = item.querySelector('.vq');
+    pill.innerHTML = pillHTML(i);
+    pill.classList.toggle('chg', vQty(i) !== Number(V.data.i[i][1]));
+  });
+  $('vlist').addEventListener('focusin', function (ev) { if (ev.target.classList && ev.target.classList.contains('vqin')) ev.target.select(); });
+  $('vonly').addEventListener('change', function (e) { V.only = e.target.checked; if (V.data) renderView(); });
+  $('vclear').addEventListener('click', function () { V.checked = {}; saveChecks(); if (V.data) renderView(); toast('Marcações removidas'); });
+  $('vcopy').addEventListener('click', function () {
+    if (!V.data) return;
+    var lines = [], last = '', n = 0, both = ((V.data.hasL ? 1 : 0) + (V.data.hasB ? 1 : 0) + (V.data.hasC ? 1 : 0)) > 1;
+    V.data.i.forEach(function (r, i) {
+      if (both && r[4] !== last) { last = r[4]; n = 0; if (lines.length) lines.push(''); lines.push(secLabel(r[4]).toUpperCase()); }
+      n += 1;
+      var q = vQty(i);
+      lines.push(n + ' ' + r[0] + ' ' + fmtQty(q, r[2], r[3]) + (q !== Number(r[1]) ? ' (pedido: ' + r[1] + ')' : ''));
+    });
+    copyText(lines.join('\n'), 'Lista copiada', null);
+  });
+  $('vnew').addEventListener('click', function (e) {
+    e.preventDefault();
+    window.__ORDER__ = null;
+    try { history.replaceState(null, '', location.href.split('#')[0]); } catch (x) { /* ignora */ }
+    route();
+    window.scrollTo(0, 0);
+  });
+
+  function setViewing(on) {
+    document.body.classList.toggle('viewing', on);
+    $('view').hidden = !on;
+    $('edit').hidden = on;
+    $('h1t').textContent = on ? 'Pedido do dia' : cfg().h1;
+    $('h1p').textContent = on ? 'Toque no quadradinho de cada item para marcar.' : 'Selecione os produtos e ajuste as quantidades com + e −.';
+    try { document.title = on ? 'Pedido do dia' : 'Pedido Diário'; } catch (e) { /* ignora */ }
+  }
+  function secLabel(k) { return k === 'b' ? 'Bebidas' : k === 'c' ? 'Estoque CD' : 'Limpeza'; }
+  function setViewTitle(d) {
+    var nm = (d && d.name) || 'PEDIDO DIARIO LIMPEZA';
+    var nice = { 'LISTA DIARIA': 'Lista diária', 'PEDIDO DIARIO BAR': 'Pedido diário bar', 'PEDIDO DIARIO LIMPEZA': 'Pedido diário limpeza', 'ESTOQUE CD': 'Estoque CD' };
+    $('h1t').textContent = nice[nm] || nm;
+    try { document.title = nm; } catch (e) { /* ignora */ }
+  }
+  function applyTab() {
+    $('tab-limp').setAttribute('aria-selected', String(S.tab !== 'beb' && S.tab !== 'cd'));
+    $('tab-beb').setAttribute('aria-selected', String(S.tab === 'beb'));
+    $('tab-cd').setAttribute('aria-selected', String(S.tab === 'cd'));
+    $('fname').textContent = curName();
+    if ($('edit').hidden === false) {
+      $('h1t').textContent = cfg().h1;
+      try { document.title = 'Pedido Diário'; } catch (e) { /* ignora */ }
+    }
+  }
+  function switchTab(t) {
+    if (S.tab === t) return;
+    S.tab = t; editId = null; delId = null; adding = false; query = '';
+    $('q').value = ''; $('zero-confirm').hidden = true;
+    save(); applyTab(); renderAdd(); renderList(); renderSummary();
+    window.scrollTo(0, 0);
+  }
+  $('tab-limp').addEventListener('click', function () { switchTab('limp'); });
+  $('tab-beb').addEventListener('click', function () { switchTab('beb'); });
+  $('tab-cd').addEventListener('click', function () { switchTab('cd'); });
+  function route() {
+    var m = /^#p=(.+)$/.exec(location.hash || '');
+    var wo = window.__ORDER__;
+    if (!m && wo && (Array.isArray(wo.i) || Array.isArray(wo.l) || Array.isArray(wo.b) || Array.isArray(wo.c))) {
+      // Arquivo LIMPEZA DIARIA recebido: o pedido já vem dentro do arquivo.
+      V.tok = 'o' + hid(JSON.stringify(window.__ORDER__)); V.only = false; $('vonly').checked = false;
+      setViewing(true);
+      V.data = expandPayload(JSON.parse(JSON.stringify(window.__ORDER__))); loadChecks(); renderView();
+      setViewTitle(V.data);
+      return;
+    }
+    if (!m) { setViewing(false); return; }
+    V.tok = m[1]; V.data = null; V.only = false; $('vonly').checked = false;
+    setViewing(true);
+    decodePayload(V.tok).then(function (d) {
+      if (!d || !(Array.isArray(d.i) || Array.isArray(d.l) || Array.isArray(d.b) || Array.isArray(d.c))) throw new Error('inválido');
+      V.data = expandPayload(d); loadChecks(); renderView(); setViewTitle(V.data);
+    }).catch(renderViewError);
+  }
+  window.addEventListener('hashchange', route);
+
+  S = load();
+  $('date').value = S.date; $('unit').value = S.unit; $('resp').value = S.resp; $('phone').value = S.phone || ''; $('hdr').checked = !!S.hdr; $('base').value = S.base || '';
+  renderUnits(); renderList(); renderSummary(); save();
+  route();
+  applyTab();
+  // Quando publicado na internet, registra o funcionamento como app instalado (inclusive sem sinal).
+  try {
+    if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol) && window.top === window) {
+      navigator.serviceWorker.register('sw.js').catch(function () { /* sem suporte neste endereço */ });
+    }
+  } catch (e) { /* ignora */ }
+})();
+</script>
+
+</body>
+</html>
